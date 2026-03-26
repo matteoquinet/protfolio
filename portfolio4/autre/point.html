@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Animation de Points</title>
+    <style>
+        body {
+            margin: 0;
+            overflow: hidden;
+            background-color: #1e1e1e;
+        }
+        canvas {
+            display: block;
+        }
+        #controls {
+            position: absolute;
+            bottom: 20px;
+            left: 20px;
+            background: rgba(0, 0, 0, 0.7);
+            color: white;
+            padding: 10px;
+            font-size: 14px;
+        }
+        #controls label {
+            margin-right: 10px;
+        }
+        #controls input {
+            width: 60px;
+        }
+    </style>
+</head>
+<body>
+
+<canvas id="canvas"></canvas>
+
+<div id="controls">
+    <label for="speed">Vitesse:</label>
+    <input type="range" id="speed" min="0" max="10" step="0.1" value="3">
+    <br>
+    <label for="size">Taille des points:</label>
+    <input type="range" id="size" min="1" max="10" step="1" value="3">
+    <br>
+    <label for="count">Nombre de points:</label>
+    <input type="range" id="count" min="100" max="50000" step="100" value="500">
+    <br>
+    <label for="mouseForce">Force souris:</label>
+    <input type="range" id="mouseForce" min="0" max="5" step="0.1" value="0.5">
+    <br>
+    <label for="mouseDistance">Distance Max Souris:</label>
+    <input type="range" id="mouseDistance" min="50" max="300" step="10" value="100">
+    <br>
+    <label for="boundaryBounciness">Rebond Bords:</label>
+    <input type="range" id="boundaryBounciness" min="0" max="1" step="0.05" value="0.5">
+</div>
+
+<script>
+    const canvas = document.getElementById('canvas');
+    const ctx = canvas.getContext('2d');
+    
+    let width, height;
+    let points = [];
+    let speed = 3;
+    let size = 3;
+    let pointCount = 500;
+    let mouseX = -100, mouseY = -100;
+    let mouseForce = 0.5;
+    let mouseDistance = 100;
+    let boundaryBounciness = 0.5;
+
+    function resizeCanvas() {
+        width = window.innerWidth;
+        height = window.innerHeight;
+        canvas.width = width;
+        canvas.height = height;
+    }
+
+    function createPoints() {
+        points = [];
+        for (let i = 0; i < pointCount; i++) {
+            points.push({
+                x: Math.random() * width,
+                y: Math.random() * height,
+                vx: (Math.random() - 0.5) * speed,
+                vy: (Math.random() - 0.5) * speed,
+                size: size
+            });
+        }
+    }
+
+    function updatePoints() {
+        ctx.clearRect(0, 0, width, height);
+
+        points.forEach(point => {
+            // Déplacement normal des points
+            point.x += point.vx;
+            point.y += point.vy;
+
+            // Réaction à la souris : mouvement plus rapide vers la souris
+            const dx = mouseX - point.x;
+            const dy = mouseY - point.y;
+            const distance = Math.sqrt(dx * dx + dy * dy);
+            
+            if (distance < mouseDistance) {
+                const force = (mouseDistance - distance) / mouseDistance * mouseForce;
+                point.vx += (dx / distance) * force;
+                point.vy += (dy / distance) * force;
+            }
+
+            // Bords du canvas : rebondir avec la possibilité d'ajuster la force du rebond
+            if (point.x < 0 || point.x > width) {
+                point.vx *= -1 * boundaryBounciness;
+            }
+            if (point.y < 0 || point.y > height) {
+                point.vy *= -1 * boundaryBounciness;
+            }
+
+            // Dessiner les points
+            ctx.beginPath();
+            ctx.arc(point.x, point.y, point.size, 0, Math.PI * 2);
+            ctx.fillStyle = 'white';
+            ctx.fill();
+        });
+
+        requestAnimationFrame(updatePoints);
+    }
+
+    // Mettre à jour les contrôles
+    document.getElementById('speed').addEventListener('input', (event) => {
+        speed = parseFloat(event.target.value);
+        points.forEach(point => {
+            point.vx = (Math.random() - 0.5) * speed;
+            point.vy = (Math.random() - 0.5) * speed;
+        });
+    });
+
+    document.getElementById('size').addEventListener('input', (event) => {
+        size = parseInt(event.target.value);
+        points.forEach(point => {
+            point.size = size;
+        });
+    });
+
+    document.getElementById('count').addEventListener('input', (event) => {
+        pointCount = parseInt(event.target.value);
+        createPoints();
+    });
+
+    document.getElementById('mouseForce').addEventListener('input', (event) => {
+        mouseForce = parseFloat(event.target.value);
+    });
+
+    document.getElementById('mouseDistance').addEventListener('input', (event) => {
+        mouseDistance = parseInt(event.target.value);
+    });
+
+    document.getElementById('boundaryBounciness').addEventListener('input', (event) => {
+        boundaryBounciness = parseFloat(event.target.value);
+    });
+
+    // Événement pour capturer la position de la souris
+    canvas.addEventListener('mousemove', (event) => {
+        mouseX = event.clientX;
+        mouseY = event.clientY;
+    });
+
+    resizeCanvas();
+    createPoints();
+    updatePoints();
+
+    window.addEventListener('resize', resizeCanvas);
+</script>
+
+</body>
+</html>

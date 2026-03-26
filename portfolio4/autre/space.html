@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jeu de Tir Spatial</title>
+    <style>
+        body {
+            margin: 0;
+            overflow: hidden;
+            background-color: #000;
+        }
+        canvas {
+            display: block;
+        }
+        #score {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            color: white;
+            font-size: 24px;
+            font-family: Arial, sans-serif;
+        }
+    </style>
+</head>
+<body>
+
+<canvas id="canvas"></canvas>
+<div id="score">Score: 0</div>
+
+<script>
+    const canvas = document.getElementById('canvas');
+    const ctx = canvas.getContext('2d');
+
+    let width, height;
+    let ship = { x: 0, y: 0, width: 40, height: 20, speed: 6 };
+    let asteroids = [];
+    let lasers = [];
+    let score = 0;
+    let gameOver = false;
+    let asteroidSpeed = 2;
+
+    // Resize the canvas to fit the screen
+    function resizeCanvas() {
+        width = window.innerWidth;
+        height = window.innerHeight;
+        canvas.width = width;
+        canvas.height = height;
+        ship.y = height - 50;  // Positionnement du vaisseau en bas
+    }
+
+    // Create new asteroid
+    function createAsteroid() {
+        const size = 30 + Math.random() * 40; // Astéroïde de taille aléatoire
+        const x = Math.random() * (width - size); // Position aléatoire
+        asteroids.push({ x: x, y: -size, size: size, speed: asteroidSpeed });
+    }
+
+    // Update the game state
+    function update() {
+        if (gameOver) {
+            ctx.fillStyle = 'white';
+            ctx.font = '48px Arial';
+            ctx.fillText('Game Over', width / 2 - 120, height / 2);
+            return;
+        }
+
+        ctx.clearRect(0, 0, width, height);
+
+        // Affichage du score
+        document.getElementById('score').innerText = `Score: ${score}`;
+
+        // Mouvements du vaisseau
+        canvas.addEventListener('mousemove', (event) => {
+            ship.x = event.clientX - ship.width / 2;
+            if (ship.x < 0) ship.x = 0;
+            if (ship.x + ship.width > width) ship.x = width - ship.width;
+        });
+
+        // Dessiner le vaisseau
+        ctx.fillStyle = 'blue';
+        ctx.fillRect(ship.x, ship.y, ship.width, ship.height);
+
+        // Tirer un laser
+        if (keys[' '] && !gameOver) {
+            lasers.push({ x: ship.x + ship.width / 2 - 5, y: ship.y - 10, width: 10, height: 20, speed: 8 });
+        }
+
+        // Mise à jour des lasers
+        lasers.forEach((laser, index) => {
+            laser.y -= laser.speed;
+            ctx.fillStyle = 'red';
+            ctx.fillRect(laser.x, laser.y, laser.width, laser.height);
+            
+            // Collision avec les astéroïdes
+            asteroids.forEach((asteroid, asteroidIndex) => {
+                if (laser.x + laser.width > asteroid.x && laser.x < asteroid.x + asteroid.size &&
+                    laser.y < asteroid.y + asteroid.size && laser.y + laser.height > asteroid.y) {
+                    // Détruire l'astéroïde et le laser
+                    asteroids.splice(asteroidIndex, 1);
+                    lasers.splice(index, 1);
+                    score += 10;  // Augmenter le score
+                }
+            });
+
+            // Supprimer le laser s'il sort de l'écran
+            if (laser.y < 0) lasers.splice(index, 1);
+        });
+
+        // Mise à jour des astéroïdes
+        asteroids.forEach((asteroid, index) => {
+            asteroid.y += asteroid.speed;
+            ctx.fillStyle = 'gray';
+            ctx.beginPath();
+            ctx.arc(asteroid.x + asteroid.size / 2, asteroid.y + asteroid.size / 2, asteroid.size / 2, 0, Math.PI * 2);
+            ctx.fill();
+
+            // Collision avec le vaisseau
+            if (asteroid.y + asteroid.size > ship.y && asteroid.x + asteroid.size > ship.x && asteroid.x < ship.x + ship.width) {
+                gameOver = true;  // Le jeu est terminé si un astéroïde touche le vaisseau
+            }
+
+            // Supprimer l'astéroïde s'il sort de l'écran
+            if (asteroid.y > height) asteroids.splice(index, 1);
+        });
+
+        // Créer de nouveaux astéroïdes à intervalles réguliers
+        if (Math.random() < 0.02) {
+            createAsteroid();
+        }
+
+        // Augmenter la vitesse des astéroïdes au fur et à mesure du jeu
+        if (score > 50 && asteroidSpeed < 5) {
+            asteroidSpeed = 4;
+        }
+        if (score > 100 && asteroidSpeed < 6) {
+            asteroidSpeed = 5;
+        }
+
+        requestAnimationFrame(update);
+    }
+
+    // Contrôler les touches (tirer)
+    let keys = {};
+    window.addEventListener('keydown', (event) => {
+        keys[event.key] = true;
+    });
+    window.addEventListener('keyup', (event) => {
+        keys[event.key] = false;
+    });
+
+    resizeCanvas();
+    update();
+
+    window.addEventListener('resize', resizeCanvas);
+</script>
+
+</body>
+</html>

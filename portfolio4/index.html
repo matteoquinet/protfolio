@@ -1,0 +1,387 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Mattéo Quinet — Portfolio</title>
+  <link rel="icon" type="image/x-icon" href="/images/favicon.png">
+  <meta name="description" content="Portfolio sombre et geek de Mattéo Quinet — Étudiant BTS SIO SLAM. Projets, veille, CV et mentions légales." />
+
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@300;400;600&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <link href="styles.css" rel="stylesheet">
+
+</head>
+<body class="theme-dark">
+
+<div class="app">
+  <aside class="sidebar" role="navigation" aria-label="Navigation principale">
+    <div class="brand">
+      <div class="logo">MQ</div>
+      <div>
+        <div class="name">Mattéo Quinet</div>
+        <div class="role">BTS SIO — SLAM</div>
+      </div>
+    </div>
+
+    <nav>
+      <ul>
+        <li><a href="#home" class="nav-link active" data-target="home">> Accueil</a></li>
+        <li><a href="veille.html" class="nav-link" data-target="veille">> Veille</a></li>
+        <li><a href="#projets" class="nav-link" data-target="projets">> Projets</a></li>
+        <li><a href="#stage" class="nav-link" data-target="stage">> Stage</a></li>
+        <li><a href="#cv" class="nav-link" data-target="cv">> CV</a></li>
+        <li><a href="#competencetech" class="nav-link" data-target="competencetech">> Compétence</a></li>
+        <li><a href="mention-legal.html" class="nav-link" data-target="legal">> Mentions</a></li>
+      </ul>
+    </nav>
+
+    <div class="theme-toggle">
+      <button id="btn-dark" class="toggle-btn active">🌙 Dark</button>
+      <button id="btn-light" class="toggle-btn">☀ Light</button>
+    </div>
+
+    <div class="socials">
+      <a href="mailto:matteoquinet06@gmail.com" class="mono">✉ matteoquinet06@gmail.com</a>
+      <a href="#" class="mono">🔗 GitHub</a>
+      <a href="#" class="mono">🔗 LinkedIn</a>
+    </div>
+  </aside>
+
+  <main class="main">
+    <div class="container">
+
+      <!-- HOME -->
+      <section id="home">
+        <div class="hero">
+          <div class="hero-left">
+            <h1 class="mono">Salut, je suis <span style="color:var(--secondary)">Mattéo</span> — Développeur en devenir</h1>
+            <p class="lead">Étudiant en BTS SIO option SLAM. J'aime résoudre des problèmes, optimiser des expériences utilisateurs et construire des applications fiables.</p>
+
+            <div class="skills">
+              <div class="skill">HTML</div>
+              <div class="skill">CSS</div>
+              <div class="skill">JavaScript</div>
+              <div class="skill">PHP</div>
+              <div class="skill">SQL</div>
+              <div class="skill">Python</div>
+              <div class="skill">Java</div>
+              <div class="skill">Node.js</div>
+              <div class="skill">Firebase</div>
+              <div class="skill">WordPress</div>
+            </div>
+
+            <div style="margin-top:18px" class="card">
+              <div style="display:flex;gap:12px;align-items:center">
+                <div class="avatar mono">MQ</div>
+                <div>
+                  <div style="font-weight:800">Etudiant SIO SLAM — Gaston Berger Lille</div>
+                  <div class="muted">Service Informatique aux Organisations - Solution Logicielle et Application Métier</div>
+                </div>
+              </div>
+            </div>
+
+          </div>
+
+          <aside class="hero-right">
+            <div class="card">
+              <h3 style="color:var(--secondary)">Aperçu</h3>
+              <p class="muted">Navigation rapide, contact et résumé.</p>
+              <div style="margin-top:12px;display:flex;flex-direction:column;gap:10px">
+                <a class="btn btn-outline mono" href="/assets/CV_Matteo_Quinet.pdf">Epreuve E4</button>
+                <a class="btn btn-outline mono" href="stage.html">Epreuve E5</button>
+                <a class="btn btn-primary mono" href="/document/CV_Matteo_Quinet.pdf" download>📥 Télécharger le CV</a>
+              </div>
+            </div>
+          </aside>
+        </div>
+      </section>
+
+
+
+      <!-- PROJETS -->
+      <section id="projets">
+        <h2>Projets réalisés</h2>
+        <p class="muted">Exemples de travaux réalisés durant le cursus et en stage.</p>
+
+        <div class="grid" style="margin-top:16px">
+
+            <article class="project">
+            <img src="https://images.pexels.com/photos/414837/pexels-photo-414837.jpeg" alt="Site e-commerce"/>
+            <h3>Site d'information écologique</h3>
+            <div class="tags"><span class="tag">PHP</span><span class="tag">MySQL</span><span class="tag">HTML/CSS</span></div>
+            <p class="desc muted">Développement complet d'un site d'information sur l'impact écologique de l'informatique</p>
+            <div style="margin-top:10px;display:flex;gap:8px">
+              <button class="btn btn-primary mono" onclick="openProject(1)">Détails</button>
+            </div>
+          </article>
+
+          <article class="project">
+            <img src="https://images.pexels.com/photos/6214476/pexels-photo-6214476.jpeg" alt="Site e-commerce"/>
+            <h3>Site E‑commerce</h3>
+            <div class="tags"><span class="tag">PHP</span><span class="tag">MySQL</span><span class="tag">HTML/CSS</span></div>
+            <p class="desc muted">Développement complet d'un site de vente: catalogue, panier, back-office et optimisation des performances. Optimisation SEO, cache et tests unitaires sur les modules critiques.</p>
+            <div style="margin-top:10px;display:flex;gap:8px">
+             <button class="btn btn-primary mono" onclick="openProject(2)">Détails</button>
+            </div>
+          </article>
+
+          <article class="project">
+            <img src="https://images.unsplash.com/photo-1515879218367-8466d910aaa4?q=80&w=1200&auto=format&fit=crop&ixlib=rb-4.0.3&s=def" alt="Portfolio app"/>
+            <h3>Application Portfolio</h3>
+            <div class="tags"><span class="tag">HTML</span><span class="tag">CSS</span><span class="tag">JS</span></div>
+            <p class="desc muted">Portfolio interactif et responsive avec animations, filtres et sections modulaires. Construit pour faciliter la réutilisation et l'intégration CMS.</p>
+            <div style="margin-top:10px;display:flex;gap:8px">
+               <button class="btn btn-primary mono" onclick="openProject(3)">Détails</button>
+            </div>
+          </article>
+
+          <article class="project">
+            <img src="https://images.unsplash.com/photo-1518770660439-4636190af475?q=80&w=1200&auto=format&fit=crop&ixlib=rb-4.0.3&s=ghi" alt="Simulation"/>
+            <h3>Simulation de Gestion</h3>
+            <div class="tags"><span class="tag">Python</span><span class="tag">Tkinter</span></div>
+            <p class="desc muted">Jeu-simulation pour apprendre la gestion d'une organisation, interface simple et sauvegarde locale. Mécaniques basiques ajoutées pour pédagogie.</p>
+            <div style="margin-top:10px;display:flex;gap:8px">
+              <button class="btn btn-primary mono" onclick="openProject(4)">Détails</button>
+            </div>
+          </article>
+
+          <article class="project">
+            <img src="https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?q=80&w=1200&auto=format&fit=crop&ixlib=rb-4.0.3&s=jkl" alt="Recettes"/>
+            <h3>Site de recettes</h3>
+            <div class="tags"><span class="tag">PHP</span><span class="tag">MySQL</span></div>
+            <p class="desc muted">Plateforme locale CRUD pour ajouter, modifier et supprimer des recettes — idéal pour apprendre les interactions serveur et la sécurité de base.</p>
+            <div style="margin-top:10px;display:flex;gap:8px">
+              <button class="btn btn-primary mono" onclick="openProject(5)">Détails</button>
+            </div>
+          </article>
+
+        </div>
+
+        <div class="see-more-wrap"><button class="see-more" onclick="seeMore('projets')">Voir plus</button></div>
+
+      </section>
+
+      <!-- Stage -->
+<section id="stage">
+  <h2>Epreuve E6 - Oral de stage</h2>
+  <p class="muted">Consultez mon parcours, mes compétences et téléchargez mon CV.</p>
+
+  <div class="cv-grid" style="margin-top:16px">
+    <div class="cv-card">
+        <h4>Expériences Professionnelles</h4>
+      <ul>
+        <li><strong>Rectorat de Lille - DRASI</strong>, Lille (Janvier 2026)<br>
+          <ul>
+            <li>Utilisation de PHP Storm</li>
+            <li>Programmation en HTML / CSS / JS / SQL</li>
+            <li>Développement de test automatisé avec Cypress</li>
+          </ul>
+        </li>
+        </ul>
+        <div style="margin-top:10px;display:flex;gap:8px">
+          <a class="btn btn-primary mono" href="stage.html">Document de l'épreuve</a>
+        </div>
+  </div>
+</section>
+
+      <!-- CV -->
+<section id="cv">
+  <h2>CV numérique</h2>
+  <p class="muted">Consultez mon parcours, mes compétences et téléchargez mon CV.</p>
+
+  <div class="cv-grid" style="margin-top:16px">
+
+    <!-- Carte Profil -->
+    <div class="cv-card">
+      <h3 class="mono" style="color:var(--secondary)">Mattéo Quinet</h3>
+      <p class="muted">Étudiant BTS SIO — SLAM • Développeur web junior</p>
+
+      <hr style="border:none;border-top:1px solid rgba(255,255,255,0.08);margin:12px 0 18px"/>
+
+        <h4>Expériences Professionnelles</h4>
+      <ul>
+        <li><strong>Rectorat - DRASI</strong>, Lille (Janvier 2026)<br><span class="muted">Stagiaire en développement</span>
+          <ul>
+            <li>Création de test automatisé via Cypress</li>
+            <li>Création de jeu de données variables</li>
+            <li>Programmation en HTML / CSS / JS</li>
+          </ul>
+        </li>
+        <li><strong>2Pace</strong>, Villeneuve d’Ascq (Juin 2025)<br><span class="muted">Stagiaire en développement</span>
+          <ul>
+            <li>Utilisation du CRM Salesforce</li>
+            <li>Programmation en HTML / CSS / JS</li>
+            <li>Développement avec LWC (Lightning Web Components)</li>
+          </ul>
+        </li>
+        <li><strong>YourSoft</strong>, Marcq-en-Barœul (Juin 2024)<br><span class="muted">Stagiaire développement web</span>
+          <ul>
+            <li>Programmation HTML et CSS</li>
+            <li>Numérisation 4D</li>
+            <li>Gestion de bases de données</li>
+          </ul>
+        </li>
+        <li><strong>Préfecture du Nord</strong>, Lille (Octobre 2023)<br><span class="muted">Stagiaire service informatique</span>
+          <ul>
+            <li>Configuration de switch</li>
+            <li>Maintenance réseau & serveurs</li>
+            <li>Téléphonie sur IP</li>
+            <li>Programmation PHP</li>
+          </ul>
+        </li>
+        <li><strong>Lycée Ozanam</strong>, Lille (Juin 2023)<br><span class="muted">Stagiaire IT</span>
+          <ul>
+            <li>Rénovation réseau informatique</li>
+            <li>Mise à jour d’ordinateurs</li>
+          </ul>
+        </li>
+        <li><strong>Lycée Ozanam</strong>, Lille (Novembre 2022)<br><span class="muted">Stagiaire IT</span>
+          <ul>
+            <li>Clonage de disques</li>
+            <li>Entretien des ordinateurs</li>
+          </ul>
+        </li>
+        <li><strong>LDLC</strong>, Villeneuve d’Ascq (Juin 2022)<br><span class="muted">Stagiaire SAV</span>
+          <ul>
+            <li>Montage & diagnostic d’ordinateurs</li>
+          </ul>
+        </li>
+        <li><strong>Double Clic</strong>, Marcq-en-Barœul (Février 2022)<br><span class="muted">Stagiaire SAV</span>
+          <ul>
+            <li>Préparation & dépannage d’ordinateurs</li>
+          </ul>
+        </li>
+      </ul>
+
+      <div class="download" style="margin-top:18px">
+        <a class="btn btn-primary mono" href="/assets/CV_Matteo_Quinet.pdf" download>📄 Télécharger le CV</a>
+      </div>
+    </div>
+
+    <!-- Carte Expériences -->
+    <div class="cv-card">
+        <h4>Compétences techniques</h4>
+      <div style="display:flex;flex-wrap:wrap;gap:8px;margin-top:8px">
+        <span class="skill">HTML</span>
+        <span class="skill">CSS</span>
+        <span class="skill">JavaScript</span>
+        <span class="skill">PHP</span>
+        <span class="skill">SQL</span>
+        <span class="skill">Python</span>
+        <span class="skill">Java</span>
+        <span class="skill">Node.js</span>
+        <span class="skill">XML</span>
+        <span class="skill">Firebase</span>
+        <span class="skill">WordPress</span>
+      </div>
+    </div>
+
+    <!-- Carte Formation -->
+    <div class="cv-card">
+      <h4>Formation</h4>
+      <ul>
+        <li><strong>2024-2026 :</strong> BTS SIO (SLAM), Gaston Berger, Lille</li>
+        <li><strong>2022-2024 :</strong> Bac Pro SN RISC, Lycée EPIL, Lille</li>
+        <li><strong>2021-2022 :</strong> Seconde TNE, Lycée EPIL, Lille</li>
+        <li><strong>2017-2021 :</strong> Collège Sainte-Marie, Beaucamps-Ligny</li>
+      </ul>
+    </div>
+
+    <!-- Carte Diplômes -->
+    <div class="cv-card">
+      <h4>Diplômes & Certifications</h4>
+      <ul>
+        <li>Permis B (2026)</li>
+        <li>BAC SN RISC (2024)</li>
+        <li class="muted" style="list-style: none;">Système Numérique avec option Réseau Informatique et Système Communicant</li>
+        <li>Brevet SST (2024)</li>
+        <li class="muted" style="list-style: none;">Sauveteur Secouriste du Travail</li>
+        <li>Diplôme national du brevet (2021)</li>
+      </ul>
+    </div>
+
+    <!-- Carte Centres d'intérêt -->
+    <div class="cv-card">
+      <h4>Centres d’intérêt</h4>
+      <ul>
+        <li>Programmation (jeux vidéo)</li>
+        <li>Montage vidéo</li>
+        <li>Électronique</li>
+        <li>Vélo, marche, ski</li>
+      </ul>
+    </div>
+
+    <!-- Carte Contact -->
+    <aside class="cv-card">
+      <h4>Contact</h4>
+      <p>> matteoquinet06@gmail.com</p>
+      <p>> Lille, France</p>
+
+      <div style="margin-top:12px">
+        <a class="btn btn-outline mono" href="mailto:matteoquinet06@gmail.com">Me contacter</a>
+      </div>
+    </aside>
+
+  </div>
+</section>
+
+<!-- Compétence technique -->
+      <section id="competencetech">
+        <h2>Compétences Techniques</h2>
+        <p class="muted">Compétences techniques et réalisations professionnels</p>
+
+        <div class="timeline" style="margin-top:12px">
+          <article class="note fade-up" id="patrimoine">
+            <h4>> Gérer le patrimoine informatique</h4>
+            <p class="summary muted">Optimisez, sécurisez et contrôlez les ressources numériques de votre organisation.</p>
+          </article>
+
+          <article class="note fade-up" id="support">
+            <h4>> Répondre aux incidents et aux demandes</h4>
+            <p class="summary muted">Assurez un support réactif et efficace pour tous les besoins informatiques.</p>
+          </article>
+
+          <article class="note fade-up" id="presenceWeb">
+            <h4>> Développer la présence en ligne</h4>
+            <p class="summary muted">Valorisez l’image numérique de votre organisation et améliorez sa visibilité web.</p>
+          </article>
+
+          <article class="note fade-up" id="projet">
+            <h4>> Travailler en mode projet</h4>
+            <p class="summary muted">Pilotez vos projets informatiques avec méthode, suivi et performance.</p>
+          </article>
+
+          <article class="note fade-up" id="serviceIT">
+            <h4>> Mettre à disposition un service informatique</h4>
+            <p class="summary muted">Déployez des services fiables et accompagnez les utilisateurs dans leur adoption.</p>
+          </article>
+
+          <article class="note fade-up" id="developpementPro">
+            <h4>> Organiser son développement professionnel</h4>
+            <p class="summary muted">Construisez votre parcours, veillez, apprenez et affirmez votre identité professionnelle.</p>
+          </article>
+
+        </div>
+      </section>
+
+
+      
+
+      <div style="height:40px"></div>
+    </div>
+  </main>
+</div>
+
+<!-- Modal -->
+<div id="modal" class="modal" aria-hidden="true">
+  <div class="modal-content">
+    <button style="float:right;border:0;background:transparent;color:var(--muted);font-weight:800;font-size:18px" onclick="closeModal()">✕</button>
+    <div id="modal-body"></div>
+  </div>
+</div>
+
+<script src="script.js"></script>
+
+</body>
+</html>

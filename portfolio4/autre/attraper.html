@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jeu Catcher</title>
+    <style>
+        body {
+            margin: 0;
+            overflow: hidden;
+            background-color: #222;
+        }
+        canvas {
+            display: block;
+        }
+        #score {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            color: white;
+            font-size: 24px;
+            font-family: Arial, sans-serif;
+        }
+    </style>
+</head>
+<body>
+
+<canvas id="canvas"></canvas>
+<div id="score">Score: 0</div>
+
+<script>
+    const canvas = document.getElementById('canvas');
+    const ctx = canvas.getContext('2d');
+
+    let width, height;
+    let player = { x: 0, y: 0, width: 100, height: 20, speed: 5 };
+    let objects = [];
+    let score = 0;
+    let gameOver = false;
+    let objectSpeed = 2;
+    
+    function resizeCanvas() {
+        width = window.innerWidth;
+        height = window.innerHeight;
+        canvas.width = width;
+        canvas.height = height;
+        player.y = height - 50;  // Positionnement du joueur en bas
+    }
+
+    function createObject() {
+        const size = 20 + Math.random() * 30;  // Taille aléatoire de l'objet
+        const x = Math.random() * (width - size);  // Position horizontale aléatoire
+        objects.push({ x: x, y: -size, size: size, speed: objectSpeed });
+    }
+
+    function update() {
+        if (gameOver) {
+            ctx.fillStyle = 'white';
+            ctx.font = '48px Arial';
+            ctx.fillText('Game Over', width / 2 - 120, height / 2);
+            return;
+        }
+
+        ctx.clearRect(0, 0, width, height);
+
+        // Affichage du score
+        document.getElementById('score').innerText = `Score: ${score}`;
+
+        // Mouvements du joueur
+        canvas.addEventListener('mousemove', (event) => {
+            player.x = event.clientX - player.width / 2;  // Centrer le joueur sous la souris
+            if (player.x < 0) player.x = 0;
+            if (player.x + player.width > width) player.x = width - player.width;
+        });
+
+        // Mise à jour des objets
+        for (let i = 0; i < objects.length; i++) {
+            let obj = objects[i];
+            obj.y += obj.speed;
+
+            // Vérifier si un objet a été attrapé
+            if (
+                obj.y + obj.size >= player.y &&
+                obj.y + obj.size <= player.y + player.height &&
+                obj.x + obj.size / 2 >= player.x &&
+                obj.x + obj.size / 2 <= player.x + player.width
+            ) {
+                // Attraper l'objet
+                score++;
+                objects.splice(i, 1);  // Supprimer l'objet attrapé
+                i--;  // Ajuster l'index après suppression
+            }
+
+            // Vérifier si un objet tombe au sol sans être attrapé
+            if (obj.y > height) {
+                gameOver = true;  // Perdre le jeu si l'objet touche le bas
+            }
+
+            // Dessiner l'objet
+            ctx.fillStyle = 'red';
+            ctx.fillRect(obj.x, obj.y, obj.size, obj.size);
+        }
+
+        // Dessiner le joueur
+        ctx.fillStyle = 'blue';
+        ctx.fillRect(player.x, player.y, player.width, player.height);
+
+        // Ajouter de nouveaux objets à intervalles réguliers
+        if (Math.random() < 0.02) {
+            createObject();
+        }
+
+        // Augmenter la vitesse des objets après un certain score
+        if (score > 10 && objectSpeed < 4) {
+            objectSpeed = 3;
+        }
+        if (score > 20 && objectSpeed < 5) {
+            objectSpeed = 4;
+        }
+
+        requestAnimationFrame(update);
+    }
+
+    resizeCanvas();
+    update();
+
+    window.addEventListener('resize', resizeCanvas);
+</script>
+
+</body>
+</html>

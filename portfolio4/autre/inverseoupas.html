@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>À l'envers ou à l'endroit</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f0f0f0;
+            overflow: hidden;
+            flex-direction: column;
+            font-family: Arial, sans-serif;
+        }
+        .game-container {
+            position: relative;
+            width: 400px;
+            height: 400px;
+        }
+        #coin {
+            width: 400px;
+            height: 400px;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            transition: transform 1s;
+        }
+        .controls {
+            margin-bottom: 20px;
+        }
+        .launch-button {
+            padding: 10px 20px;
+            font-size: 18px;
+            font-weight: bold;
+            color: white;
+            background-color: #007BFF;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+        .launch-button:hover {
+            background-color: #0056b3;
+        }
+        .change-image {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+        }
+        .result {
+            position: fixed;
+            bottom: 20px;
+            font-size: 24px;
+            font-weight: bold;
+        }
+        .options {
+            position: fixed;
+            bottom: 20px;
+            left: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="controls">
+        <button class="launch-button" onclick="launchCoin()">Lancer</button>
+    </div>
+    <div class="game-container">
+        <img id="coin" src="https://cdn-prod.habitat.fr/thumbnails/product/1112/1112877/box/850/850/20/F4F4F4/chaise-en-chene-massif-bois-clair_1112877.jpg" alt="Pièce">
+    </div>
+    <div id="result" class="result"></div>
+    <button class="change-image" onclick="changeImage()">Modifier l'image</button>
+    <div class="options">
+        <label>Options de chute :</label>
+        <select id="fallOptions">
+            <option value="2" selected>2</option>
+            <option value="1">1</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+            <option value="6">6</option>
+            <option value="7">7</option>
+            <option value="8">8</option>
+        </select>
+    </div>
+
+    <script>
+        function launchCoin() {
+            let coin = document.getElementById("coin");
+            let resultText = document.getElementById("result");
+            let fallOption = parseInt(document.getElementById("fallOptions").value);
+            let angle = 0;
+            let x = 200, y = 200;
+            let vx = (Math.random() - 0.5) * 10;
+            let vy = (Math.random() - 0.5) * 10;
+            let zigzag = 0;
+            let interval = setInterval(() => {
+                angle += 20;
+                x += vx * (Math.sin(zigzag) * 2);
+                y += vy * (Math.cos(zigzag) * 2);
+                zigzag += 0.3;
+                
+                if (x <= 0 || x >= 400) vx = -vx;
+                if (y <= 0 || y >= 400) vy = -vy;
+                
+                coin.style.transform = `translate(${x - 200}px, ${y - 200}px) rotate(${angle}deg)`;
+            }, 30);
+            
+            setTimeout(() => {
+                clearInterval(interval);
+                let finalRotation = Math.floor(Math.random() * fallOption) * (360 / fallOption);
+                coin.style.transform = `translate(-50%, -50%) rotate(${finalRotation}deg)`;
+                
+                let outcomes = [
+                    "À l'endroit !", "À l'envers !", "Coin en bas à droite !", "Coin en haut à droite !",
+                    "Coin en bas à gauche !", "Coin en haut à gauche !", "Tranche droite !", "Tranche gauche !"
+                ];
+                
+                resultText.textContent = outcomes[finalRotation / (360 / fallOption)] || "À l'endroit !";
+            }, 5000);
+        }
+        
+        function changeImage() {
+            let newImage = prompt("Entrez l'URL de la nouvelle image :");
+            if (newImage) {
+                document.getElementById("coin").src = newImage;
+            }
+        }
+    </script>
+</body>
+</html>

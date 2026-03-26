@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flappy Bird</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+            background-color: #70c5ce;
+        }
+        canvas {
+            display: block;
+        }
+        #score {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            color: white;
+            font-size: 24px;
+            font-family: Arial, sans-serif;
+        }
+    </style>
+</head>
+<body>
+
+<canvas id="canvas"></canvas>
+<div id="score">Score: 0</div>
+
+<script>
+    const canvas = document.getElementById('canvas');
+    const ctx = canvas.getContext('2d');
+
+    let width, height;
+    let bird = {
+        x: 50,
+        y: 200,
+        width: 30,
+        height: 30,
+        vy: 0,
+        gravity: 0.6,
+        lift: -15,
+        speed: 0,
+        alive: true
+    };
+
+    let pipes = [];
+    let score = 0;
+    let gameOver = false;
+    let pipeInterval = 1000; // Intervalle entre deux tuyaux
+    let lastPipe = 0;
+    
+    // Fonction pour redimensionner le canvas
+    function resizeCanvas() {
+        width = window.innerWidth;
+        height = window.innerHeight;
+        canvas.width = width;
+        canvas.height = height;
+    }
+
+    // Créer un tuyau avec un plus grand gap
+    function createPipe() {
+        const gap = 250; // Augmenter l'espace entre les tuyaux
+        const pipeHeight = Math.floor(Math.random() * (height - gap)); // Hauteur aléatoire des tuyaux
+        pipes.push({
+            x: width,
+            y: 0,
+            width: 60,
+            height: pipeHeight,
+            gap: gap
+        });
+    }
+
+    // Mettre à jour le jeu
+    function update() {
+        if (!bird.alive) {
+            ctx.fillStyle = 'white';
+            ctx.font = '48px Arial';
+            ctx.fillText('Game Over', width / 2 - 120, height / 2);
+            ctx.fillText('Score: ' + score, width / 2 - 90, height / 2 + 60);
+            return;
+        }
+
+        ctx.clearRect(0, 0, width, height);
+
+        // Mettre à jour l'oiseau
+        bird.vy += bird.gravity;
+        bird.y += bird.vy;
+
+        // Si l'oiseau touche le sol ou le plafond
+        if (bird.y + bird.height > height || bird.y < 0) {
+            bird.alive = false;
+        }
+
+        // Dessiner l'oiseau
+        ctx.fillStyle = 'yellow';
+        ctx.fillRect(bird.x, bird.y, bird.width, bird.height);
+
+        // Créer de nouveaux tuyaux
+        if (Date.now() - lastPipe > pipeInterval) {
+            createPipe();
+            lastPipe = Date.now();
+        }
+
+        // Déplacer les tuyaux
+        for (let i = 0; i < pipes.length; i++) {
+            let pipe = pipes[i];
+            pipe.x -= 3; // Vitesse des tuyaux
+
+            // Si le tuyau est hors de l'écran, le supprimer
+            if (pipe.x + pipe.width < 0) {
+                pipes.splice(i, 1);
+                score++;
+                i--;
+            }
+
+            // Vérifier si l'oiseau touche un tuyau
+            if (
+                bird.x + bird.width > pipe.x &&
+                bird.x < pipe.x + pipe.width &&
+                (bird.y < pipe.height || bird.y + bird.height > pipe.height + pipe.gap)
+            ) {
+                bird.alive = false;
+            }
+
+            // Dessiner les tuyaux
+            ctx.fillStyle = 'green';
+            ctx.fillRect(pipe.x, pipe.y, pipe.width, pipe.height); // Tuyau du haut
+            ctx.fillRect(pipe.x, pipe.height + pipe.gap, pipe.width, height - (pipe.height + pipe.gap)); // Tuyau du bas
+        }
+
+        // Afficher le score
+        document.getElementById('score').innerText = 'Score: ' + score;
+
+        requestAnimationFrame(update);
+    }
+
+    // Contrôles de l'oiseau
+    window.addEventListener('keydown', (event) => {
+        if (event.key === ' ' && bird.alive) {
+            bird.vy = bird.lift;
+        }
+    });
+
+    window.addEventListener('click', (event) => {
+        if (bird.alive) {
+            bird.vy = bird.lift;
+        } else {
+            // Si le jeu est terminé, on peut le redémarrer
+            bird.alive = true;
+            bird.y = 200;
+            bird.vy = 0;
+            pipes = [];
+            score = 0;
+            gameOver = false;
+            update();
+        }
+    });
+
+    // Initialisation du jeu
+    resizeCanvas();
+    update();
+
+    window.addEventListener('resize', resizeCanvas);
+</script>
+
+</body>
+</html>

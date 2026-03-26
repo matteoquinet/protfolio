@@ -1,0 +1,60 @@
+⚙️ 1. Utiliser Cache-Control sur Vercel
+Vercel te permet de définir des en-têtes HTTP via un fichier spécial : vercel.json.
+
+🔧 Exemple de configuration vercel.json :
+json
+{
+  "headers": [
+    {
+      "source": "/doc.pdf",
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=86400, must-revalidate"
+        }
+      ]
+    }
+  ]
+}
+📁 Place ce fichier à la racine de ton projet. Il indique à Vercel de permettre la mise en cache du PDF pendant 24h.
+
+📄 2. Streaming / Affichage partiel (Range Requests)
+Bonne nouvelle : Vercel prend en charge les requêtes de type Range pour les fichiers statiques comme les PDF hébergés depuis GitHub. Tu n’as rien à configurer côté serveur.
+
+✅ Ce que tu peux faire côté client :
+Tu peux utiliser JavaScript pour lire partiellement un PDF via fetch avec l’en-tête Range.
+
+🧪 Exemple HTML/JS :
+html
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Lecture partielle PDF</title>
+</head>
+<body>
+  <button onclick="loadPartialPDF()">Charger début du PDF</button>
+
+  <script>
+    async function loadPartialPDF() {
+      const response = await fetch('/doc.pdf', {
+        headers: {
+          'Range': 'bytes=0-1023' // Charge les 1024 premiers octets
+        }
+      });
+
+      if (response.status === 206) {
+        const data = await response.arrayBuffer();
+        console.log('Partie du PDF chargée :', data.byteLength, 'octets');
+      } else {
+        console.warn('Le serveur n’a pas répondu avec un contenu partiel.');
+      }
+    }
+  </script>
+</body>
+</html>
+🧩 Résumé
+✅ Cache-Control → via vercel.json
+
+✅ Range Requests → pris en charge automatiquement par Vercel pour les fichiers statiques
+
+✅ Lecture partielle → possible via fetch avec Range en JS

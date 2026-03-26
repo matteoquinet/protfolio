@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jeu de Football</title>
+    <style>
+        body {
+            margin: 0;
+            overflow: hidden;
+            background-color: #2f2f2f;
+        }
+        canvas {
+            display: block;
+            background-color: #4caf50;
+        }
+        #controls {
+            position: absolute;
+            bottom: 20px;
+            left: 20px;
+            background: rgba(0, 0, 0, 0.7);
+            color: white;
+            padding: 10px;
+            font-size: 14px;
+        }
+        #controls label {
+            margin-right: 10px;
+        }
+        #controls input {
+            width: 60px;
+        }
+    </style>
+</head>
+<body>
+
+<canvas id="canvas"></canvas>
+
+<div id="controls">
+    <label for="speed">Vitesse Joueur:</label>
+    <input type="range" id="speed" min="0" max="10" step="0.1" value="3">
+    <br>
+    <label for="ballSpeed">Vitesse Ballon:</label>
+    <input type="range" id="ballSpeed" min="0" max="5" step="0.1" value="2">
+    <br>
+    <label for="playerSize">Taille Joueur:</label>
+    <input type="range" id="playerSize" min="5" max="20" step="1" value="10">
+    <br>
+    <label for="ballSize">Taille Ballon:</label>
+    <input type="range" id="ballSize" min="5" max="15" step="1" value="7">
+</div>
+
+<script>
+    const canvas = document.getElementById('canvas');
+    const ctx = canvas.getContext('2d');
+
+    let width, height;
+    let players = [];
+    let ball = {};
+    let mouseX = -100, mouseY = -100;
+    let speed = 3;
+    let ballSpeed = 2;
+    let playerSize = 10;
+    let ballSize = 7;
+    let goalLeft = 0, goalRight = 0;
+    let playerCount = 2;  // Two players for now, could be expanded later
+
+    function resizeCanvas() {
+        width = window.innerWidth;
+        height = window.innerHeight;
+        canvas.width = width;
+        canvas.height = height;
+        goalLeft = { x: 0, y: height / 2 - 50, width: 20, height: 100 };
+        goalRight = { x: width - 20, y: height / 2 - 50, width: 20, height: 100 };
+    }
+
+    function createPlayers() {
+        players = [];
+        for (let i = 0; i < playerCount; i++) {
+            players.push({
+                x: (i + 1) * width / (playerCount + 1),
+                y: height / 2,
+                vx: 0,
+                vy: 0,
+                size: playerSize
+            });
+        }
+    }
+
+    function createBall() {
+        ball = {
+            x: width / 2,
+            y: height / 2,
+            vx: 0,
+            vy: 0,
+            size: ballSize
+        };
+    }
+
+    function update() {
+        ctx.clearRect(0, 0, width, height);
+
+        // Draw the goals
+        ctx.fillStyle = 'white';
+        ctx.fillRect(goalLeft.x, goalLeft.y, goalLeft.width, goalLeft.height);
+        ctx.fillRect(goalRight.x, goalRight.y, goalRight.width, goalRight.height);
+
+        // Update players' positions based on mouse
+        players.forEach(player => {
+            const dx = mouseX - player.x;
+            const dy = mouseY - player.y;
+            const distance = Math.sqrt(dx * dx + dy * dy);
+            if (distance > player.size) {
+                const angle = Math.atan2(dy, dx);
+                player.vx = Math.cos(angle) * speed;
+                player.vy = Math.sin(angle) * speed;
+            } else {
+                player.vx = 0;
+                player.vy = 0;
+            }
+            player.x += player.vx;
+            player.y += player.vy;
+
+            // Draw the players
+            ctx.beginPath();
+            ctx.arc(player.x, player.y, player.size, 0, Math.PI * 2);
+            ctx.fillStyle = 'blue';
+            ctx.fill();
+        });
+
+        // Update ball position
+        ball.x += ball.vx;
+        ball.y += ball.vy;
+
+        // Ball collision with players
+        players.forEach(player => {
+            const dx = ball.x - player.x;
+            const dy = ball.y - player.y;
+            const distance = Math.sqrt(dx * dx + dy * dy);
+            if (distance < player.size + ball.size) {
+                const angle = Math.atan2(dy, dx);
+                const power = ballSpeed;
+                ball.vx = Math.cos(angle) * power;
+                ball.vy = Math.sin(angle) * power;
+            }
+        });
+
+        // Ball bounce off walls
+        if (ball.x < 0 || ball.x > width) ball.vx *= -1;
+        if (ball.y < 0 || ball.y > height) ball.vy *= -1;
+
+        // Draw the ball
+        ctx.beginPath();
+        ctx.arc(ball.x, ball.y, ball.size, 0, Math.PI * 2);
+        ctx.fillStyle = 'white';
+        ctx.fill();
+
+        // Check if goal is scored
+        if (ball.x < goalLeft.x + goalLeft.width && ball.y > goalLeft.y && ball.y < goalLeft.y + goalLeft.height) {
+            alert('But marqué à gauche!');
+            resetGame();
+        }
+        if (ball.x > goalRight.x - goalRight.width && ball.y > goalRight.y && ball.y < goalRight.y + goalRight.height) {
+            alert('But marqué à droite!');
+            resetGame();
+        }
+
+        requestAnimationFrame(update);
+    }
+
+    function resetGame() {
+        createBall();
+        createPlayers();
+    }
+
+    // Control the mouse position
+    canvas.addEventListener('mousemove', (event) => {
+        mouseX = event.clientX;
+        mouseY = event.clientY;
+    });
+
+    // Update controls
+    document.getElementById('speed').addEventListener('input', (event) => {
+        speed = parseFloat(event.target.value);
+    });
+
+    document.getElementById('ballSpeed').addEventListener('input', (event) => {
+        ballSpeed = parseFloat(event.target.value);
+    });
+
+    document.getElementById('playerSize').addEventListener('input', (event) => {
+        playerSize = parseInt(event.target.value);
+        players.forEach(player => {
+            player.size = playerSize;
+        });
+    });
+
+    document.getElementById('ballSize').addEventListener('input', (event) => {
+        ballSize = parseInt(event.target.value);
+        ball.size = ballSize;
+    });
+
+    resizeCanvas();
+    createPlayers();
+    createBall();
+    update();
+
+    window.addEventListener('resize', resizeCanvas);
+</script>
+
+</body>
+</html>
