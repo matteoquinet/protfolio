@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="styles.css">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700;800&family=Fira+Code:wght@400;700&display=swap" rel="stylesheet">
 </head>
-<body class="theme-dark">
+<body class="theme-light">
     <div class="app">
         <!-- Sidebar (identique à tes autres pages) -->
         <aside class="sidebar">
@@ -46,7 +46,7 @@
                     <h2>Présentation du projet</h2>
                     <div class="card">
                         <p>
-                            Dans le cadre de ma formation BTS SIO, j’ai réalisé un projet complet autour de <strong>GLPI</strong>, solution open-source de gestion de parc informatique et de helpdesk.
+                            Dans le cadre de ma formation BTS SIO, j’ai réalisé un projet complet autour de <strong>GLPI</strong>.
                         </p>
                         <p>
                             Ce projet comprend :
@@ -71,13 +71,13 @@
                     <h2>Tutoriels PDF</h2>
                     <div class="grid">
                         <div class="project">
-                            <h3>📄 Tutoriel d’installation de GLPI</h3>
+                            <h3>Tutoriel d’installation de GLPI</h3>
                             <p class="desc">
                                 Guide pas à pas pour installer GLPI sur un serveur Linux (Apache/MySQL/PHP), incluant la configuration initiale et les bonnes pratiques de sécurité.
                             </p>
                             <div class="cta">
-                                <a href="pdf/tuto-installation-glpi.pdf" target="_blank" class="btn btn-primary">
-                                    <span class="mono">tuto-installation-glpi.pdf</span>
+                                <a href="document/tuto-debian-13-glpi.pdf" target="_blank" class="btn btn-primary">
+                                    <span class="mono">tuto-debian-13-glpi.pdf</span>
                                 </a>
                             </div>
                             <div class="tags">
@@ -88,13 +88,13 @@
                         </div>
 
                         <div class="project">
-                            <h3>📧 Mise en place des collecteurs de mail</h3>
+                            <h3>Mise en place des collecteurs de mail</h3>
                             <p class="desc">
                                 Documentation pour configurer les collecteurs de mail dans GLPI, permettant la création automatique de tickets à partir d’emails entrants.
                             </p>
                             <div class="cta">
-                                <a href="pdf/collecteurs-mail-glpi.pdf" target="_blank" class="btn btn-primary">
-                                    <span class="mono">collecteurs-mail-glpi.pdf</span>
+                                <a href="document/tuto-glpi-collecteur-mail.pdf" target="_blank" class="btn btn-primary">
+                                    <span class="mono">tuto-glpi-collecteur-mail.pdf</span>
                                 </a>
                             </div>
                             <div class="tags">
@@ -111,36 +111,36 @@
                     <div class="card">
                         <h3>1. Prérequis</h3>
                         <ul>
-                            <li>Serveur Linux (Debian/Ubuntu recommandé)</li>
-                            <li>Apache 2.4+</li>
-                            <li>PHP 7.4+</li>
-                            <li>MySQL 5.7+ ou MariaDB 10.2+</li>
-                            <li>Accès root ou sudo</li>
+                            <li>Serveur Linux Debian</li>
+                            <li>Apache</li>
+                            <li>PHP</li>
+                            <li>MariaDB</li>
+                            <li>Accès root et sudo</li>
                         </ul>
 
                         <h3>2. Installation des dépendances</h3>
                         <div class="code-block">
-<code>
-# Mise à jour des paquets
-sudo apt update && sudo apt upgrade -y
+                            <code>
+                            # Mise à jour des paquets
+                            sudo apt update && sudo apt upgrade -y
 
-# Installation d'Apache, MySQL, PHP et extensions requises
-sudo apt install apache2 mariadb-server php php-{cli,common,curl,gd,imap,ldap,mysql,intl,xmlrpc,mbstring,bcmath,zip,bz2}
-</code>
+                            # Installation d'Apache, MySQL, PHP et extensions requises
+                            sudo apt install apache2 mariadb-server php php-{cli,common,curl,gd,imap,ldap,mysql,intl,xmlrpc,mbstring,bcmath,zip,bz2}
+                            </code>
                         </div>
 
                         <h3>3. Configuration de la base de données</h3>
                         <div class="code-block">
-<code>
-# Connexion à MySQL
-sudo mysql -u root -p
+                            <code>
+                            # Connexion à MySQL
+                            sudo mysql -u root -p
 
-# Création de la base et de l'utilisateur GLPI
-CREATE DATABASE glpi;
-CREATE USER 'glpi'@'localhost' IDENTIFIED BY 'votre_mot_de_passe';
-GRANT ALL PRIVILEGES ON glpi.* TO 'glpi'@'localhost';
-FLUSH PRIVILEGES;
-</code>
+                            # Création de la base et de l'utilisateur GLPI
+                            CREATE DATABASE glpi;
+                            CREATE USER 'glpi'@'localhost' IDENTIFIED BY 'votre_mot_de_passe';
+                            GRANT ALL PRIVILEGES ON glpi.* TO 'glpi'@'localhost';
+                            FLUSH PRIVILEGES;
+                            </code>
                         </div>
 
                         <p class="muted">
@@ -178,19 +178,19 @@ FLUSH PRIVILEGES;
                     <h2>Compétences acquises</h2>
                     <div class="grid">
                         <div class="project">
-                            <h3>🛠️ Techniques</h3>
+                            <h3>Techniques</h3>
                             <p>Installation et configuration d’un serveur web (Apache, PHP, MySQL)</p>
                             <p>Gestion des bases de données et des utilisateurs</p>
                             <p>Configuration des services mail (Postfix, collecteurs GLPI)</p>
                         </div>
                         <div class="project">
-                            <h3>📝 Documentation</h3>
+                            <h3>Documentation</h3>
                             <p>Rédaction de tutoriels clairs et structurés</p>
                             <p>Création de supports adaptés aux utilisateurs finaux</p>
                             <p>Mise en forme professionnelle (PDF, captures d’écran)</p>
                         </div>
                         <div class="project">
-                            <h3>🔧 Résolution de problèmes</h3>
+                            <h3>Résolution de problèmes</h3>
                             <p>Diagnostic des erreurs d’installation</p>
                             <p>Optimisation des performances</p>
                             <p>Automatisation des processus</p>
