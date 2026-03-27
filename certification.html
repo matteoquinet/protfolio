@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Certification EF3 – Développement Android en Java</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700;800&family=Fira+Code:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body class="theme-dark">
+    <div class="app">
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <div class="logo">M</div>
+            <div class="name">Mattéo Quinet</div>
+            <div class="role">Étudiant BTS SIO SLAM</div>
+            <nav>
+                <ul>
+                    <li><a href="stage-2pace.html">Certif</a></li>
+
+                </ul>
+            </nav>
+            <div class="theme-toggle">
+                <button class="toggle-btn active">Dark</button>
+                <button class="toggle-btn">Light</button>
+            </div>
+            <div class="socials">
+                <a href="#">LinkedIn</a>
+                <a href="#">GitHub</a>
+            </div>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="main">
+            <div class="container">
+                <section>
+                    <h1>Certification EF3 – Développement Android en Java</h1>
+                    <p class="lead">OpenClassrooms – Projet d’application mobile</p>
+                </section>
+
+                <section>
+                    <h2>Présentation personnelle et contexte</h2>
+                    <div class="card">
+                        <p>
+                            Je suis étudiant en <strong>BTS SIO option SLAM</strong>. J’ai choisi cette formation car je suis passionné par le développement logiciel.
+                        </p>
+                        <p>
+                            Pour la certification EF3, j’ai décidé de me certifier via <strong>OpenClassrooms</strong> sur le développement d’applications mobiles en Java. Ce domaine m’intéresse particulièrement et je trouve qu’il est sous-représenté dans les parcours classiques.
+                        </p>
+                        <p>
+                            Mon objectif était d’acquérir des compétences concrètes en développement mobile, en réalisant un projet complet et fonctionnel.
+                        </p>
+                    </div>
+                </section>
+
+                <section>
+                    <h2>Présentation du projet</h2>
+                    <div class="cv-grid">
+                        <div>
+                            <h3>Objectifs</h3>
+                            <p>
+                                Dans le cadre de cette certification, j’ai réalisé un projet pratique autour du développement Android en Java. L’objectif principal était de maîtriser les bases du développement mobile :
+                            </p>
+                            <ul>
+                                <li>Création d’interfaces utilisateur</li>
+                                <li>Gestion des activités et de la navigation</li>
+                                <li>Manipulation des données</li>
+                                <li>Interaction avec des API (si applicable)</li>
+                            </ul>
+                            <p>
+                                Les contraintes étaient principalement techniques : respecter les bonnes pratiques Android, bien utiliser Java (classes, sous-classes, héritage), et produire une application fonctionnelle et stable.
+                            </p>
+                        </div>
+                        <div>
+                            <h3>Images du projet</h3>
+                            <div class="card">
+                                <img src="images/certification/ecran1.jpg" alt="Capture d’écran de l’application Android" style="width:100%; border-radius:8px;">
+                                <p class="muted" style="text-align:center; margin-top:8px; font-size:13px;">Interface principale de l’application</p>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <section>
+                    <h2>Analyse du besoin et conception</h2>
+                    <div class="card">
+                        <p>
+                            Je me suis formé avec OpenClassrooms sur un projet d’<strong>application de quizz</strong>. J’ai pu identifier les fonctionnalités essentielles, définir les cas d’usage et structurer l’application.
+                        </p>
+                        <p>
+                            Mes choix techniques se sont naturellement orientés vers :
+                        </p>
+                        <ul>
+                            <li><strong>Java</strong> : pour la logique métier et la gestion des données</li>
+                            <li><strong>Android Studio</strong> : pour le développement et le débogage</li>
+                            <li><strong>XML</strong> : pour la définition des interfaces</li>
+                        </ul>
+                        <p>
+                            J’ai également utilisé des outils comme Git pour le versionnage du code.
+                        </p>
+                    </div>
+                </section>
+
+                <section>
+                    <h2>Développement et mise en œuvre</h2>
+                    <div class="cv-grid">
+                        <div>
+                            <h3>Fonctionnalités développées</h3>
+                            <ul>
+                                <li>Navigation entre écrans (Activities)</li>
+                                <li>Gestion des formulaires et des entrées utilisateur</li>
+                                <li>Stockage local des données (SharedPreferences, fichiers)</li>
+                                <li>Affichage dynamique des questions et des résultats</li>
+                            </ul>
+                            <p>
+                                J’ai structuré mon code en respectant l’architecture recommandée par Android :
+                            </p>
+                            <ul>
+                                <li>Séparation des activités</li>
+                                <li>Création de classes utilitaires</li>
+                                <li>Externalisation des ressources (strings, styles) dans les fichiers XML</li>
+                            </ul>
+                        </div>
+                        <div>
+                            <h3>Exemple de code</h3>
+                            <div class="code-block">
+<code>
+// Exemple de classe Java pour gérer un quiz
+public class Quiz {
+    private List<Question> questions;
+    private int score;
+
+    public Quiz() {
+        this.questions = new ArrayList<>();
+        this.score = 0;
+    }
+
+    public void addQuestion(Question question) {
+        this.questions.add(question);
+    }
+
+    public void checkAnswer(int questionIndex, String userAnswer) {
+        if (questions.get(questionIndex).getCorrectAnswer().equals(userAnswer)) {
+            score++;
+        }
+    }
+
+    public int getScore() {
+        return score;
+    }
+}
+</code>
+                            </div>
+                            <div class="card" style="margin-top:12px;">
+                                <img src="images/certification/ecran2.jpg" alt="Capture d’écran du code Android Studio" style="width:100%; border-radius:8px;">
+                                <p class="muted" style="text-align:center; margin-top:8px; font-size:13px;">Code source dans Android Studio</p>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <section>
+                    <h2>Sécurité et bonnes pratiques</h2>
+                    <div class="card">
+                        <p>
+                            J’ai appliqué les bonnes pratiques de sécurité enseignées dans la formation :
+                        </p>
+                        <ul>
+                            <li>Gestion correcte des permissions Android (dans le fichier <code>AndroidManifest.xml</code>)</li>
+                            <li>Respect de la confidentialité des données stockées localement</li>
+                            <li>Écriture d’un code lisible, commenté et structuré</li>
+                            <li>Utilisation des bonnes pratiques de développement Java (encapsulation, héritage, etc.)</li>
+                        </ul>
+                        <p>
+                            J’ai également veillé à ce que l’application soit stable et réactive, en testant régulièrement sur différents appareils et versions d’Android.
+                        </p>
+                    </div>
+                </section>
+
+                <section>
+                    <h2>Compétences mobilisées</h2>
+                    <div class="grid">
+                        <div class="project">
+                            <h3>💻 Développement applicatif</h3>
+                            <p>Création d’une application Android complète, de la conception à la réalisation.</p>
+                        </div>
+                        <div class="project">
+                            <h3>🔧 Maintenance corrective</h3>
+                            <p>Correction de bugs et amélioration continue du code.</p>
+                        </div>
+                        <div class="project">
+                            <h3>🗃️ Gestion des données</h3>
+                            <p>Stockage local, manipulation d’objets Java, gestion des états.</p>
+                        </div>
+                        <div class="project">
+                            <h3>📅 Travail en mode projet</h3>
+                            <p>Respect des consignes, gestion du temps, autonomie.</p>
+                        </div>
+                        <div class="project">
+                            <h3>📱 Compétences techniques</h3>
+                            <p>Java, Android Studio, XML, Git, bonnes pratiques Android.</p>
+                        </div>
+                        <div class="project">
+                            <h3>📝 Documentation</h3>
+                            <p>Rédaction de commentaires clairs, documentation du projet.</p>
+                        </div>
+                    </div>
+                </section>
+
+                <section>
+                    <h2>Analyse critique et prise de recul</h2>
+                    <div class="card">
+                        <p>
+                            Avec plus de temps, j’aurais aimé :
+                        </p>
+                        <ul>
+                            <li>Intégrer une base de données SQL (Room ou SQLite) pour une gestion plus avancée des données</li>
+                            <li>Améliorer l’interface utilisateur avec des animations et un design plus moderne</li>
+                            <li>Ajouter des fonctionnalités supplémentaires comme un système de scores en ligne ou un partage des résultats</li>
+                        </ul>
+                        <p>
+                            Ce projet m’a donné envie de continuer dans le développement mobile et d’explorer <strong>Kotlin</strong>, qui devient la norme sur Android. Je souhaite également approfondir mes connaissances en architecture MVVM et en utilisation d’API REST.
+                        </p>
+                    </div>
+                </section>
+
+                <section>
+                    <h2>Conclusion</h2>
+                    <div class="card">
+                        <p>
+                            Cette certification m’a permis d’acquérir des compétences concrètes en développement mobile, notamment :
+                        </p>
+                        <ul>
+                            <li>Développer une application mobile en Java</li>
+                            <li>Utiliser Android Studio et ses outils de débogage</li>
+                            <li>Structurer une application selon les bonnes pratiques Android</li>
+                        </ul>
+                        <p>
+                            Elle m’a fait progresser techniquement, mais aussi en autonomie et en rigueur. Ce projet s’inscrit pleinement dans mon projet professionnel, qui est de devenir développeur d’applications, que ce soit mobile ou web.
+                        </p>
+                        <p>
+                            Je compte poursuivre dans cette voie, en me formant sur Kotlin et en réalisant des projets plus ambitieux.
+                        </p>
+                    </div>
+                </section>
+
+                <section>
+                    <h2>Galerie d’images</h2>
+                    <div class="grid">
+                        <div class="project">
+                            <img src="images/certification/ecran3.jpg" alt="Capture d’écran de l’application" style="width:100%; border-radius:8px;">
+                            <p class="muted" style="text-align:center; margin-top:8px; font-size:13px;">Écran d’accueil</p>
+                        </div>
+                        <div class="project">
+                            <img src="images/certification/ecran4.jpg" alt="Capture d’écran du quiz" style="width:100%; border-radius:8px;">
+                            <p class="muted" style="text-align:center; margin-top:8px; font-size:13px;">Questionnaire interactif</p>
+                        </div>
+                        <div class="project">
+                            <img src="images/certification/ecran5.jpg" alt="Capture d’écran des résultats" style="width:100%; border-radius:8px;">
+                            <p class="muted" style="text-align:center; margin-top:8px; font-size:13px;">Affichage des résultats</p>
+                        </div>
+                    </div>
+                </section>
+
+                <div class="see-more-wrap">
+                    <button class="see-more" onclick="window.location.href='projets.html'">
+                        Voir mes autres projets
+                    </button>
+                </div>
+            </div>
+        </main>
+    </div>
+
+</body>
+</html>
