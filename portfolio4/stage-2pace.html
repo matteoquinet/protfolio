@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stage 2pace – Portfolio BTS SIO</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700;800&family=Fira+Code:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body class="theme-dark">
+    <div class="app">
+        <!-- Sidebar (à inclure via un include ou copier depuis ton template principal) -->
+        <aside class="sidebar">
+            <div class="logo">M</div>
+            <div class="name">Mattéo Quinet</div>
+            <div class="role">Étudiant BTS SIO SLAM</div>
+            <nav>
+                <ul>
+                    <li><a href="index.html">Accueil</a></li>
+                    <li><a href="stage-2pace.html" class="active">Stage 2pace</a></li>
+                    <li><a href="projets.html">Projets</a></li>
+                    <li><a href="veille.html">Veille</a></li>
+                    <li><a href="cv.html">CV</a></li>
+                </ul>
+            </nav>
+            <div class="theme-toggle">
+                <button class="toggle-btn active">Dark</button>
+                <button class="toggle-btn">Light</button>
+            </div>
+            <div class="socials">
+                <a href="#">LinkedIn</a>
+                <a href="#">GitHub</a>
+            </div>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="main">
+            <div class="container">
+                <section>
+                    <h1>Stage chez 2pace – Développement Salesforce</h1>
+                    <p class="lead">Du 19 mai au 27 juin 2026 – Tuteur : Grégory Quinet</p>
+                </section>
+
+                <section>
+                    <h2>Présentation de l’entreprise</h2>
+                    <div class="card">
+                        <p>
+                            <strong>2pace</strong> est une entreprise spécialisée dans le développement de solutions digitales sur mesure, notamment dans l’écosystème <strong>Salesforce</strong>. Elle accompagne ses clients dans la transformation digitale de leurs processus métiers grâce à des applications performantes, modulaires et évolutives.
+                        </p>
+                        <p>
+                            L’équipe allie expertise technique, méthodologie agile et écoute client pour livrer des solutions adaptées aux besoins spécifiques de chaque projet.
+                        </p>
+                    </div>
+                </section>
+
+                <section>
+                    <h2>Objectif du stage</h2>
+                    <div class="card">
+                        <p>
+                            L’objectif principal de mon stage était de <strong>contribuer au développement d’une application Salesforce conçue pour être entièrement customisable</strong> par les utilisateurs finaux ou les administrateurs, sans intervention technique lourde.
+                        </p>
+                        <p>
+                            Cette application vise à offrir une interface modulable, adaptable à différents contextes métiers, tout en respectant les contraintes et bonnes pratiques de la plateforme Salesforce.
+                        </p>
+                        <div class="skills">
+                            <span class="skill">Lightning Web Components</span>
+                            <span class="skill">Apex</span>
+                            <span class="skill">JSON</span>
+                            <span class="skill">Git</span>
+                            <span class="skill">Méthode Agile</span>
+                        </div>
+                    </div>
+                </section>
+
+                <section>
+                    <h2>Missions réalisées</h2>
+                    <div class="cv-grid">
+                        <div>
+                            <h3>Étude et prise en main de Salesforce</h3>
+                            <ul>
+                                <li>Découverte de l’environnement Salesforce (Lightning, Apex, Visualforce, Flows)</li>
+                                <li>Compréhension de l’architecture orientée composant et de la logique declarative vs. programmatique</li>
+                                <li>Formation sur <strong>Trailhead</strong> (plateforme d’apprentissage Salesforce)</li>
+                            </ul>
+
+                            <h3>Développement de composants customisables</h3>
+                            <ul>
+                                <li>Création de composants <strong>Lightning Web Components (LWC)</strong> dynamiques et réutilisables</li>
+                                <li>Mise en place de paramètres dynamiques (labels, champs, filtres) via des fichiers JSON</li>
+                                <li>Intégration de règles conditionnelles pour modifier l’affichage ou le comportement des modules</li>
+                            </ul>
+
+                            <h3>Participation à la conception fonctionnelle</h3>
+                            <ul>
+                                <li>Réflexion sur les types de personnalisations possibles (UI, logique métier, intégration de données)</li>
+                                <li>Collaboration avec l’équipe produit pour définir un modèle de configuration simple mais puissant (ex. : JSON de configuration)</li>
+                            </ul>
+                        </div>
+                        <div>
+                            <h3>Tests et documentation</h3>
+                            <ul>
+                                <li>Rédaction de tests unitaires en Apex</li>
+                                <li>Documentation technique sur les modules développés</li>
+                                <li>Contribution à un guide utilisateur sur la personnalisation de l’application</li>
+                            </ul>
+
+                            <h3>Exemple de code : Gestion du JSON</h3>
+                            <div class="code-block">
+<code>
+{
+  "index": "2",
+  "type": "layout",
+  "style": "default",
+  "nbcol": 1,
+  "content": [
+    {
+      "index": "2_1",
+      "type": "section",
+      "style": "error",
+      "title": "section 1",
+      "opened": true,
+      "content": [...]
+    }
+  ]
+}
+</code>
+                            </div>
+
+                            <h3>Fonctionnalités clés développées</h3>
+                            <ul>
+                                <li>Gestion dynamique de l’arborescence des composants</li>
+                                <li>Sauvegarde et rafraîchissement des données après modification</li>
+                                <li>Personnalisation de l’interface via JSON</li>
+                            </ul>
+                        </div>
+                    </div>
+                </section>
+
+                <section>
+                    <h2>Compétences développées</h2>
+                    <div class="grid">
+                        <div class="project">
+                            <h3>Techniques</h3>
+                            <p>Apex, LWC, configuration Salesforce, Git, gestion des métadonnées</p>
+                        </div>
+                        <div class="project">
+                            <h3>Méthodologiques</h3>
+                            <p>Travail en méthode Agile (daily meetings, user stories), gestion de versions</p>
+                        </div>
+                        <div class="project">
+                            <h3>Fonctionnelles</h3>
+                            <p>Compréhension des besoins clients, logique de configuration, UX orientée utilisateur</p>
+                        </div>
+                    </div>
+                </section>
+
+                <section>
+                    <h2>Bilan et perspectives</h2>
+                    <div class="card">
+                        <p>
+                            Ce stage chez 2pace a été une expérience enrichissante, tant sur le plan technique que professionnel. J’ai pu contribuer à un projet concret, dans un environnement stimulant et collaboratif.
+                        </p>
+                        <p>
+                            La possibilité de travailler sur une application "low-code / no-code" m’a sensibilisé aux enjeux de flexibilité et d’autonomie des utilisateurs dans les solutions logicielles modernes.
+                        </p>
+                        <p>
+                            À l’issue de ce stage, je me sens mieux préparé à travailler sur des projets Salesforce ou à évoluer dans des environnements d’intégration d’ERP/CRM. J’envisage de poursuivre dans cette voie, soit par une alternance, soit par un premier emploi dans le domaine du développement ou du consulting Salesforce.
+                        </p>
+                    </div>
+                </section>
+
+                <section>
+                    <h2>Annexes</h2>
+                    <div class="grid">
+                        <div class="project">
+                            <h3>Captures d’écran</h3>
+                            <p>Interface de l’application, arborescence, exemples de JSON, etc.</p>
+                            <div class="tags">
+                                <span class="tag">LWC</span>
+                                <span class="tag">Salesforce</span>
+                                <span class="tag">JSON</span>
+                            </div>
+                        </div>
+                        <div class="project">
+                            <h3>Liens utiles</h3>
+                            <p>
+                                <a href="https://trailhead.salesforce.com/" target="_blank">Trailhead Salesforce</a><br>
+                                <a href="#" target="_blank">Documentation technique (PDF)</a>
+                            </p>
+                        </div>
+                        <div class="project">
+                            <h3>Rapport de stage</h3>
+                            <p>Disponible sur demande ou en téléchargement ci-dessous.</p>
+                            <div class="cta">
+                                <button class="btn btn-outline">Télécharger le rapport</button>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </main>
+    </div>
+
+    <script>
+        // Gestion du thème (dark/light)
+        document.querySelectorAll('.toggle-btn').forEach(btn => {
+            btn.addEventListener('click', () => {
+                document.querySelectorAll('.toggle-btn').forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+                document.body.classList.toggle('theme-dark');
+                document.body.classList.toggle('theme-light');
+            });
+        });
+    </script>
+</body>
+</html>
