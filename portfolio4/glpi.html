@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Projet GLPI – Portfolio BTS SIO</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700;800&family=Fira+Code:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body class="theme-dark">
+    <div class="app">
+        <!-- Sidebar (identique à tes autres pages) -->
+        <aside class="sidebar">
+            <div class="logo">M</div>
+            <div class="name">Mattéo Quinet</div>
+            <div class="role">Étudiant BTS SIO SLAM</div>
+            <nav>
+                <ul>
+                    <li><a href="index.html">Accueil</a></li>
+                    <li><a href="stage-2pace.html">Stage 2pace</a></li>
+                    <li><a href="glpi.html" class="active">Projet GLPI</a></li>
+                    <li><a href="projets.html">Projets</a></li>
+                    <li><a href="veille.html">Veille</a></li>
+                    <li><a href="cv.html">CV</a></li>
+                </ul>
+            </nav>
+            <div class="theme-toggle">
+                <button class="toggle-btn active">Dark</button>
+                <button class="toggle-btn">Light</button>
+            </div>
+            <div class="socials">
+                <a href="#">LinkedIn</a>
+                <a href="#">GitHub</a>
+            </div>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="main">
+            <div class="container">
+                <section>
+                    <h1>Projet GLPI – Mise en place et configuration</h1>
+                    <p class="lead">Installation, paramétrage et collecteurs de mail</p>
+                </section>
+
+                <section>
+                    <h2>Présentation du projet</h2>
+                    <div class="card">
+                        <p>
+                            Dans le cadre de ma formation BTS SIO, j’ai réalisé un projet complet autour de <strong>GLPI</strong>, solution open-source de gestion de parc informatique et de helpdesk.
+                        </p>
+                        <p>
+                            Ce projet comprend :
+                        </p>
+                        <ul>
+                            <li>L’installation complète de GLPI sur un serveur</li>
+                            <li>La configuration des collecteurs de mail pour la gestion des tickets par email</li>
+                            <li>La rédaction de tutoriels détaillés pour chaque étape</li>
+                        </ul>
+                        <div class="skills">
+                            <span class="skill">GLPI</span>
+                            <span class="skill">Apache</span>
+                            <span class="skill">MySQL</span>
+                            <span class="skill">PHP</span>
+                            <span class="skill">Postfix</span>
+                            <span class="skill">Documentation</span>
+                        </div>
+                    </div>
+                </section>
+
+                <section>
+                    <h2>Tutoriels PDF</h2>
+                    <div class="grid">
+                        <div class="project">
+                            <h3>📄 Tutoriel d’installation de GLPI</h3>
+                            <p class="desc">
+                                Guide pas à pas pour installer GLPI sur un serveur Linux (Apache/MySQL/PHP), incluant la configuration initiale et les bonnes pratiques de sécurité.
+                            </p>
+                            <div class="cta">
+                                <a href="pdf/tuto-installation-glpi.pdf" target="_blank" class="btn btn-primary">
+                                    <span class="mono">tuto-installation-glpi.pdf</span>
+                                </a>
+                            </div>
+                            <div class="tags">
+                                <span class="tag">Installation</span>
+                                <span class="tag">Serveur</span>
+                                <span class="tag">Linux</span>
+                            </div>
+                        </div>
+
+                        <div class="project">
+                            <h3>📧 Mise en place des collecteurs de mail</h3>
+                            <p class="desc">
+                                Documentation pour configurer les collecteurs de mail dans GLPI, permettant la création automatique de tickets à partir d’emails entrants.
+                            </p>
+                            <div class="cta">
+                                <a href="pdf/collecteurs-mail-glpi.pdf" target="_blank" class="btn btn-primary">
+                                    <span class="mono">collecteurs-mail-glpi.pdf</span>
+                                </a>
+                            </div>
+                            <div class="tags">
+                                <span class="tag">Email</span>
+                                <span class="tag">Postfix</span>
+                                <span class="tag">Automatisation</span>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <section>
+                    <h2>Extrait du tutoriel d’installation</h2>
+                    <div class="card">
+                        <h3>1. Prérequis</h3>
+                        <ul>
+                            <li>Serveur Linux (Debian/Ubuntu recommandé)</li>
+                            <li>Apache 2.4+</li>
+                            <li>PHP 7.4+</li>
+                            <li>MySQL 5.7+ ou MariaDB 10.2+</li>
+                            <li>Accès root ou sudo</li>
+                        </ul>
+
+                        <h3>2. Installation des dépendances</h3>
+                        <div class="code-block">
+<code>
+# Mise à jour des paquets
+sudo apt update && sudo apt upgrade -y
+
+# Installation d'Apache, MySQL, PHP et extensions requises
+sudo apt install apache2 mariadb-server php php-{cli,common,curl,gd,imap,ldap,mysql,intl,xmlrpc,mbstring,bcmath,zip,bz2}
+</code>
+                        </div>
+
+                        <h3>3. Configuration de la base de données</h3>
+                        <div class="code-block">
+<code>
+# Connexion à MySQL
+sudo mysql -u root -p
+
+# Création de la base et de l'utilisateur GLPI
+CREATE DATABASE glpi;
+CREATE USER 'glpi'@'localhost' IDENTIFIED BY 'votre_mot_de_passe';
+GRANT ALL PRIVILEGES ON glpi.* TO 'glpi'@'localhost';
+FLUSH PRIVILEGES;
+</code>
+                        </div>
+
+                        <p class="muted">
+                            <em>Pour la suite, consulter le PDF complet.</em>
+                        </p>
+                    </div>
+                </section>
+
+                <section>
+                    <h2>Extrait : Configuration des collecteurs de mail</h2>
+                    <div class="card">
+                        <h3>1. Préparation du serveur mail</h3>
+                        <p>
+                            Assurez-vous que votre serveur peut recevoir des emails (Postfix/Dovecot recommandé).
+                        </p>
+
+                        <h3>2. Configuration dans GLPI</h3>
+                        <p>
+                            Dans GLPI, allez dans <strong>Configuration → Collecteurs de mail</strong> :
+                        </p>
+                        <ul>
+                            <li>Ajouter un nouveau collecteur</li>
+                            <li>Renseigner l’adresse email, le serveur IMAP/POP, le login/mot de passe</li>
+                            <li>Définir les règles de création de ticket (projet, catégorie, priorité)</li>
+                            <li>Tester la connexion et sauvegarder</li>
+                        </ul>
+
+                        <p class="muted">
+                            <em>Pour plus de détails, consulter le PDF dédié.</em>
+                        </p>
+                    </div>
+                </section>
+
+                <section>
+                    <h2>Compétences acquises</h2>
+                    <div class="grid">
+                        <div class="project">
+                            <h3>🛠️ Techniques</h3>
+                            <p>Installation et configuration d’un serveur web (Apache, PHP, MySQL)</p>
+                            <p>Gestion des bases de données et des utilisateurs</p>
+                            <p>Configuration des services mail (Postfix, collecteurs GLPI)</p>
+                        </div>
+                        <div class="project">
+                            <h3>📝 Documentation</h3>
+                            <p>Rédaction de tutoriels clairs et structurés</p>
+                            <p>Création de supports adaptés aux utilisateurs finaux</p>
+                            <p>Mise en forme professionnelle (PDF, captures d’écran)</p>
+                        </div>
+                        <div class="project">
+                            <h3>🔧 Résolution de problèmes</h3>
+                            <p>Diagnostic des erreurs d’installation</p>
+                            <p>Optimisation des performances</p>
+                            <p>Automatisation des processus</p>
+                        </div>
+                    </div>
+                </section>
+
+                <section>
+                    <h2>Bilan</h2>
+                    <div class="card">
+                        <p>
+                            Ce projet m’a permis de <strong>maîtriser l’installation et la configuration avancée de GLPI</strong>, ainsi que la gestion des flux mail pour l’automatisation des tickets.
+                        </p>
+                        <p>
+                            J’ai également renforcé mes compétences en <strong>rédaction technique</strong> et en <strong>support utilisateur</strong>, essentielles pour un futur administrateur système ou technicien support.
+                        </p>
+                        <p>
+                            Les tutoriels produits sont aujourd’hui utilisés par d’autres étudiants et pourraient être adaptés pour un usage professionnel.
+                        </p>
+                    </div>
+                </section>
+
+                <div class="see-more-wrap">
+                    <button class="see-more" onclick="window.location.href='projets.html'">
+                        Voir mes autres projets
+                    </button>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script>
+        // Gestion du thème (dark/light)
+        document.querySelectorAll('.toggle-btn').forEach(btn => {
+            btn.addEventListener('click', () => {
+                document.querySelectorAll('.toggle-btn').forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+                document.body.classList.toggle('theme-dark');
+                document.body.classList.toggle('theme-light');
+            });
+        });
+    </script>
+</body>
+</html>
