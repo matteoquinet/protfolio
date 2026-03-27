@@ -1,0 +1,316 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Mattéo Quinet — Portfolio</title>
+  <link rel="icon" type="image/x-icon" href="/images/favicon.png">
+  <meta name="description" content="Portfolio sombre et geek de Mattéo Quinet — Étudiant BTS SIO SLAM. Projets, veille, CV et mentions légales." />
+
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@300;400;600&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <link href="styles.css" rel="stylesheet">
+
+</head>
+<body class="theme-light">
+    <div class="app">
+        <aside class="sidebar">
+            <div class="logo">MQ</div>
+            <div class="name">Portfolio E5</div>
+            <div class="role">Stage DRASI – BTS SIO SLAM</div>
+            <nav>
+                <ul>
+                    <li><a href="#contexte" class="active">Contexte</a></li>
+                    <li><a href="#missions">Missions</a></li>
+                    <li><a href="#tests">Tests Cypress</a></li>
+                    <li><a href="#bilan">Bilan</a></li>
+                    <li><a href="#annexes">Annexes</a></li>
+                    <li><a href="index.html">< Retour</a></li>
+                </ul>
+            </nav>
+        </aside>
+        <main class="main">
+            <div class="container">
+                <section id="contexte">
+                    <h1>Contexte du Stage</h1>
+                    <p class="lead">Stage au Rectorat de Lille – Direction Régionale des Systèmes d’Information (DRASI)</p>
+                    <div class="card">
+                        <p>Mission principale : Participation au développement, à la maintenance et aux tests automatisés d’une application de gestion du temps partiel pour les enseignants.</p>
+                        <p><strong>Environnement technique :</strong> Docker, PHP, MySQL, Cypress, Terraform, Composer, Git.</p>
+                    </div>
+                </section>
+
+                <section id="missions">
+                    <h2>Missions et Réalisation</h2>
+
+                    <h3>1. Développement et Maintenance</h3>
+                    <div class="card">
+                        <p><strong>Installation et configuration :</strong></p>
+                        <ul>
+                            <li>Réinstallation des outils de développement (DevTools, Cypress, Terraform).</li>
+                            <li>Utilisation de Docker pour le déploiement local.</li>
+                            <li>Gestion des dépendances avec <code>composer install</code>.</li>
+                        </ul>
+                        <p><strong>Base de données :</strong></p>
+                        <ul>
+                            <li>Ajout de jeux de données pour les tests (<code>test_data.sql</code>, <code>test_data_3.sql</code>).</li>
+                            <li>Correction de requêtes SQL pour la compatibilité PHP8.</li>
+                        </ul>
+                        <div class="code-block">
+                            SELECT<br>
+                            &nbsp;&nbsp;tp_type,<br>
+                            &nbsp;&nbsp;if (prolonge_choix_tp_enfant_naiss_date='0000-00-00',NULL,prolonge_choix_tp_enfant_naiss_date) as prolonge_choix_tp_enfant_naiss_date,<br>
+                            &nbsp;&nbsp;...<br>
+                            FROM p2_demande<br>
+                            WHERE iddemande='".(int)$iddemande."'<br>
+                            ORDER BY iddemande DESC;
+                        </div>
+                    </div>
+
+                    <h3>2. Structure de Tests Automatisés avec Cypress</h3>
+                    <div class="card">
+                        <p><strong>Objectif :</strong> Automatiser les tests fonctionnels pour garantir la qualité de l’application.</p>
+                        <p><strong>Structure des tests :</strong></p>
+                        <div class="code-block">
+                            Test Cypress<br>
+                            ├─ 001_accesApplication<br>
+                            ├─ 101_gestionnaire<br>
+                            │&nbsp;&nbsp;├─ 111_GestionDemande<br>
+                            │&nbsp;&nbsp;├─ 112_GestionDemandeRecap<br>
+                            │&nbsp;&nbsp;├─ 113_ModifierDemande<br>
+                            │&nbsp;&nbsp;└─ 121_GestionTraitement<br>
+                            ├─ 201_enseignant<br>
+                            │&nbsp;&nbsp;└─ 211_IdentiteSituation<br>
+                            │&nbsp;&nbsp;└─ 221_Recapitulatif<br>
+                            └─ 301_ien
+                        </div>
+                        <p><strong>Exemple de test :</strong></p>
+                        <div class="code-block">
+                            Then("Je vois le formulaire {string}", (formulaire) => {<br>
+                            &nbsp;&nbsp;const mapping = {<br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;"Gestion d'un enseignant": "#v-selectionEnseignant",<br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;"Traitement des décisions": "#v-traitementDecision",<br>
+                            &nbsp;&nbsp;};<br>
+                            &nbsp;&nbsp;cy.get(mapping[formulaire]).contains(formulaire);<br>
+                            });
+                        </div>
+                        <p><strong>Résultats :</strong> 50 tests écrits, tous opérationnels le 28/01.</p>
+                    </div>
+
+                    <h3>3. Tests Automatisés avec Cypress</h3>
+                    <div class="card">
+                        <h3>Approche Technique avec Cypress</h3>
+                        <p class="lead">Exemples concrets de tests automatisés et bonnes pratiques mises en œuvre pendant le stage.</p>
+
+                        <h4>1. Structure des Scénarios de Test</h4>
+                        <p>Les scénarios Cypress suivent une logique <strong>Given/When/Then</strong> pour une lisibilité optimale et une maintenance facilitée.</p>
+                        <div class="code-block">
+                            Feature: Test d'accès<br>
+                            En tant qu'enseignant<br>
+                            Je souhaite utiliser l'application<br><br>
+                            Background:<br>
+                            &nbsp;&nbsp;Given Ouverture application en profil "enseignant"<br><br>
+                            Scenario: J'arrive sur l'index<br>
+                            &nbsp;&nbsp;Then Je vois la page index<br><br>
+                            Scenario: Désigner à un bureau de gestion<br>
+                            &nbsp;&nbsp;Then Nom du bureau est visible<br>
+                            &nbsp;&nbsp;Then Mail est valide
+                        </div>
+
+                        <h4>2. Interaction avec les Éléments du DOM</h4>
+                        <p>Utilisation de sélecteurs CSS et de méthodes Cypress pour interagir avec les éléments de l’interface.</p>
+                        <div class="code-block">
+                            // Clic sur un menu spécifique<br>
+                            When("Je clique sur le menu {string}", (menu) => {<br>
+                            &nbsp;&nbsp;cy.get('input[value="' + menu + '"]').click();<br>
+                            });<br><br>
+                            When('J\'ouvre le menu {string}', (menu) => {<br>
+                            &nbsp;&nbsp;cy.get(`input[value="${menu}"]`).click();<br>
+                            &nbsp;&nbsp;cy.wait(500); // Attente pour stabiliser l'interface<br>
+                            });
+                        </div>
+
+                        <h4>3. Gestion des Boutons Radio</h4>
+                        <p>Vérification et sélection des boutons radio via un mapping pour éviter la duplication de code.</p>
+                        <div class="code-block">
+                            // Mapping des libellés vers les IDs des boutons radio<br>
+                            const radioMapping = {<br>
+                            &nbsp;&nbsp;"Demande de temps partiel": "demande_nature__demande_tp",<br>
+                            &nbsp;&nbsp;"Réintégration à temps complet": "demande_nature__reint",<br>
+                            &nbsp;&nbsp;"Annulation": "demande_nature__annulation",<br>
+                            &nbsp;&nbsp;"1er degré": "etab_affect__1degre",<br>
+                            &nbsp;&nbsp;"2nd degré": "etab_affect__2degre",<br>
+                            &nbsp;&nbsp;"Oui": "participation_mouvement__oui",<br>
+                            &nbsp;&nbsp;"Non": "participation_mouvement__non"<br>
+                            };<br><br>
+                            Then("Le bouton radio {string} est présent", (label) => {<br>
+                            &nbsp;&nbsp;cy.get(`input[type="radio"]#${radioMapping[label]}`)<br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;.should("exist")<br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;.and("be.visible");<br>
+                            });<br><br>
+                            When("Je sélectionne le bouton radio {string}", (id) => {<br>
+                            &nbsp;&nbsp;cy.get(`input[type="radio"]#${id}`).check({ force: true });<br>
+                            });<br><br>
+                            Then("Le bouton radio {string} est coché", (id) => {<br>
+                            &nbsp;&nbsp;cy.get(`input[type="radio"]#${id}`).should("be.checked");<br>
+                            });
+                                </div>
+
+                        <h4>4. Vérification des Formulaires et Pages</h4>
+                        <p>Validation de la présence des formulaires et des éléments clés sur chaque page.</p>
+                        <div class="code-block">
+                            // Vérification de la présence d'un formulaire<br>
+                            Then("Je vois le formulaire {string}", (formulaire) => {<br>
+                            &nbsp;&nbsp;const mapping = {<br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;"Identité et situation": "#p1_identite",<br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;"Gestion d'un enseignant": "#v-selectionEnseignant",<br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;"Traitement des décisions": "#v-traitementDecision"<br>
+                            &nbsp;&nbsp;};<br>
+                            &nbsp;&nbsp;cy.get(mapping[formulaire]).contains(formulaire);<br>
+                            });<br><br>
+                            // Vérification des champs d'un formulaire<br>
+                            Then("Le champ {string} est visible", (champId) => {<br>
+                            &nbsp;&nbsp;cy.get(`#${champId}`).should("be.visible");<br>
+                            });<br><br>
+                            // Exemple pour la page IEN<br>
+                            Then('Je vois la page index IEN', () => {<br>
+                            &nbsp;&nbsp;cy.get(".blocBase")<br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;.contains("Synthèse des demandes de temps partiel pour la circonscription: ");<br>
+                            });
+                        </div>
+
+                        <h4>5. Gestion des Scénarios Complexes</h4>
+                        <p>Exemple de scénario complet pour tester la modification des champs de situation.</p>
+                        <div class="code-block">
+                            Scenario: Je modifie les champs de la situation<br>
+                            &nbsp;&nbsp;When J'ouvre le menu "Ma demande"<br>
+                            &nbsp;&nbsp;Then Je vois le formulaire "Identité et situation"<br>
+                            &nbsp;&nbsp;When Je sélectionne le bouton radio "demande_nature__reint"<br>
+                            &nbsp;&nbsp;Then Le bouton radio "demande_nature__reint" est coché<br>
+                            &nbsp;&nbsp;When Je sélectionne le bouton radio "etab_affect__2degre"<br>
+                            &nbsp;&nbsp;Then Le bouton radio "etab_affect__2degre" est coché<br>
+                            &nbsp;&nbsp;When Je clique sur le bouton "Suivant"<br>
+                            &nbsp;&nbsp;// Then Le formulaire suivant est affiché
+                        </div>
+
+                        <h4>6. Bonnes Pratiques et Difficultés Rencontrées</h4>
+                        <ul>
+                            <li><strong>Mapping centralisé</strong> : Utilisation de constantes pour éviter la duplication de sélecteurs.</li>
+                            <li><strong>Attentes explicites</strong> : <code>cy.wait(500)</code> pour stabiliser l’interface après une action.</li>
+                            <li><strong>Forçage des actions</strong> : <code>{ force: true }</code> pour les éléments parfois masqués par le CSS.</li>
+                            <li><strong>Difficultés</strong> :
+                                <ul>
+                                    <li>Gestion des dates au format <code>0000-00-00</code> (corrigé en <code>0000-01-01</code> pour PHP8).</li>
+                                    <li>Problème de visibilité des demandes pour le profil IEN (lié aux circonscriptions).</li>
+                                    <li>Bouton "Suivant" parfois non cliquable (contourné avec <code>{ force: true }</code>).</li>
+                                </ul>
+                            </li>
+                        </ul>
+
+                    <div class="see-more-wrap">
+                        <a href="https://docs.cypress.io" target="_blank" class="see-more">Documentation officielle Cypress</a>
+                    </div>
+                </div>
+
+                </section>
+
+                <section id="tests">
+                    <h2>Structure des Tests Cypress</h2>
+                    <div class="card">
+                        <h3>Détail des Tests Cypress par Module</h3>
+
+                        <h4>101_gestionnaire - Compte gestionnaire - page d’accueil</h4>
+                        <p>Test la page d’accueil de gestionnaire et vérification de la présence des menus, du bureau et du mail.</p>
+
+                        <h4>111_GestionDemande - Compte gestionnaire - onglet “Suivi/Saisie des demandes” - Partie 1</h4>
+                        <p>Test des données comme le nom de naissance, d’usage, prénom, mail et numéro de dossier dans le formulaire “Gestion d'un enseignant”.</p>
+
+                        <h4>112_GestionDemandeRecap - Compte gestionnaire - onglet “Suivi/Saisie des demandes” - Partie 2</h4>
+                        <p>Saisie d’un numéro de dossier et vérification des données sur le formulaire.</p>
+
+                        <h4>113_ModifierDemande - Compte gestionnaire - onglet “Suivi/Saisie des demandes” - Partie 3</h4>
+                        <p>Saisie d’un numéro de dossier puis modification de la demande du numéro en question.</p>
+
+                        <h4>121_GestionTraitement - Compte gestionnaire - onglet “Traitement des décisions”</h4>
+                        <p>Test des boutons radios et traitement des utilisateurs.</p>
+
+                        <h4>201_enseignant - Compte enseignant - page d’accueil</h4>
+                        <p>Test la page d’accueil de l’enseignant et vérification de la présence des menus, du bureau et du mail.</p>
+
+                        <h4>211_IdentiteSituation - Compte enseignant - onglet “Ma demande”</h4>
+                        <p>Vérification des données de la personne connectée, test des boutons radios. Le bouton "suivant" ne fonctionne pas.</p>
+
+                        <h4>221_Recapitulatif - Compte enseignant - onglet “Récapitulatif”</h4>
+                        <p>Vérification de la présence du récapitulatif dans l’onglet.</p>
+
+                        <h4>301_ien - Compte IEN - page d’accueil</h4>
+                        <p>Vérification que tout soit présent sur la page.</p>
+
+                        </div>
+
+                </section>
+
+                <section id="bilan">
+                    <h2>Bilan et Difficultés</h2>
+                    <div class="card">
+                        <h3>Réussites</h3>
+                        <ul>
+                            <li>Automatisation complète des tests pour les profils gestionnaire, enseignant et IEN.</li>
+                            <li>Correction de bugs majeurs (dates SQL, accès aux données).</li>
+                        </ul>
+                        <h3>Limites</h3>
+                        <ul>
+                            <li>Certains tests Cypress non résolus (bouton “suivant”, recherche par numéro de dossier).</li>
+                            <li>Page IEN : demandes non visibles malgré leur existence en base.</li>
+                            <li>Traitement des décisions non fonctionnel en production.</li>
+                        </ul>
+                    </div>
+                </section>
+
+                <section id="annexes">
+                    <h2>Annexes Techniques</h2>
+                    <div class="card">
+                        <h3>Exemples de données enseignants</h3>
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Nom usage</th>
+                                    <th>Nom naissance</th>
+                                    <th>Prénom</th>
+                                    <th>Num dossier</th>
+                                    <th>UID</th>
+                                    <th>Numen</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>RIEZ</td>
+                                    <td>AMIS</td>
+                                    <td>LAURE</td>
+                                    <td>1</td>
+                                    <td>lriez</td>
+                                    <td>59G0224793LHY</td>
+                                </tr>
+                                <tr>
+                                    <td>VANOOS</td>
+                                    <td>VANOOS</td>
+                                    <td>ANNY</td>
+                                    <td>5</td>
+                                    <td>avanoos</td>
+                                    <td>59G0729299ZAT</td>
+                                </tr>
+                                <tr>
+                                    <td>DUPOND</td>
+                                    <td>BERTRAND</td>
+                                    <td>SYLVIE</td>
+                                    <td>8</td>
+                                    <td>sbertrand</td>
+                                    <td>59G1734434YAC</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        
+                    </div>
+                </section>
+</body>
+</html>
