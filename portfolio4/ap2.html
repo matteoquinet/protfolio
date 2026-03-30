@@ -3,22 +3,24 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Portfolio - Atelier Professionnalisation BTS SIO SLAM</title>
-    <link rel="stylesheet" href="styles.css">
+    <title>Atelier Professionnalisation – Portfolio BTS SIO SLAM</title>
+    <link rel="stylesheet" href="style.css">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700;800&family=Fira+Code:wght@400;700&display=swap" rel="stylesheet">
 </head>
-<body class="theme-light">
+<body class="theme-dark">
     <div class="app">
         <!-- Sidebar -->
         <aside class="sidebar">
-            <div class="logo">MQ</div>
-            <div class="name">Mattéo Quinet</div>
+            <div class="logo">MM</div>
+            <div class="name">Mak Mak</div>
             <div class="role">Étudiant BTS SIO SLAM</div>
             <nav>
                 <ul>
-                    <li><a href="#">Présentation</a></li>
-                    <li><a href="#">1</a></li>
-                    <li><a href="#2">2</a></li>
+                    <li><a href="#presentation">Présentation</a></li>
+                    <li><a href="#jalon1">Jalon 1</a></li>
+                    <li><a href="#jalon2">Jalon 2</a></li>
+                    <li><a href="#competences">Compétences</a></li>
+                    <li><a href="#annexes">Annexes</a></li>
                     <li><a href="index.html">< Retour</a></li>
                 </ul>
             </nav>
@@ -27,181 +29,266 @@
                 <button class="toggle-btn">Light</button>
             </div>
             <div class="socials">
-                <a href="#">GitHub</a>
                 <a href="#">LinkedIn</a>
-                <a href="#">Email</a>
+                <a href="#">GitHub</a>
             </div>
         </aside>
 
-       <!-- Main Content -->
+        <!-- Main Content -->
         <main class="main">
             <div class="container">
+                <!-- Présentation -->
+                <section id="presentation">
+                    <h1>Atelier Professionnalisation – Projet CashCash</h1>
+                    <p class="lead">
+                        Du [date de début] au [date de fin] – Volume horaire : 80h en atelier + travail personnel.
+                        <br>
+                        Tuteur : [Nom du tuteur]
+                    </p>
+                </section>
+
+                <!-- Présentation de l'entreprise -->
                 <section>
-                    <h1>Atelier Professionnalisation</h1>
-                    <p class="lead"> Projet réalisé dans le cadre du BTS SIO SLAM pour l'entreprise CashCash via VDEV.</p>
-                 </section>
-
-                <!-- Projet section -->
-                <section id="projet">
-                    <h2>Projet : Gestion des Interventions pour CashCash</h2>
-                    <p class="lead">
-                        Application web et client lourd pour la gestion des interventions techniques et des contrats de maintenance.
-                    </p>
-
-                    <div class="grid">
-                        <!-- Project 1 -->
-                        <div class="project">
-                            <img src="https://via.placeholder.com/360x140?text=Application+Web" alt="Application Web">
-                            <h3>Application Web (Jalon 2)</h3>
-                            <p class="desc muted">
-                                Gestion des interventions pour les techniciens et gestionnaires. Authentification sécurisée, génération de PDF, statistiques.
-                            </p>
-                            <div class="tags">
-                                <span class="tag">JavaScript</span>
-                                <span class="tag">PHP</span>
-                                <span class="tag">MySQL</span>
-                            </div>
-                        </div>
-                        <!-- Project 2 -->
-                        <div class="project">
-                            <img src="https://via.placeholder.com/360x140?text=Client+Lourd" alt="Client Lourd">
-                            <h3>Client Lourd (Jalon 3)</h3>
-                            <p class="desc muted">
-                                Gestion des contrats et export XML/PDF. Intégration avec le SI des clients.
-                            </p>
-                            <div class="tags">
-                                <span class="tag">Java</span>
-                                <span class="tag">XML</span>
-                                <span class="tag">PostgreSQL</span>
-                            </div>
-                        </div>
-                        <!-- Project 3 -->
-                        <div class="project">
-                            <img src="https://via.placeholder.com/360x140?text=Base+de+Données" alt="Base de Données">
-                            <h3>Base de Données</h3>
-                            <p class="desc muted">
-                                Modélisation MCD/MLD, scripts SQL, triggers, procédures stockées.
-                            </p>
-                            <div class="tags">
-                                <span class="tag">SQL</span>
-                                <span class="tag">Merise</span>
-                                <span class="tag">PL/SQL</span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="see-more-wrap">
-                        <button class="see-more">Voir plus de détails</button>
+                    <h2>Présentation de l'entreprise CashCash</h2>
+                    <div class="card">
+                        <p>
+                            <strong>CashCash</strong> est une entreprise spécialisée dans la vente de <strong>terminaux point de vente (TPV)</strong> :
+                            caisses automatiques, lecteurs de cartes, écrans, souris, etc. Elle dessert des hypermarchés, supermarchés et petits commerçants en France.
+                        </p>
+                        <p>
+                            CashCash possède un <strong>système d'information (SI)</strong> construit sur un réseau IP, avec des plateformes hétérogènes (Mac OS, Linux, Windows, iOS, Android).
+                        </p>
+                        <p>
+                            Dans le cadre de cet atelier, nous sommes salariés de <strong>VDEV</strong>, une société prestataire chargée de répondre aux besoins informatiques de CashCash.
+                        </p>
                     </div>
                 </section>
 
-                <!-- Compétences section -->
+                <!-- Objectif de l'atelier -->
+                <section>
+                    <h2>Objectif de l'atelier</h2>
+                    <div class="card">
+                        <p>
+                            L'objectif principal de cet atelier est de <strong>développer une application web et un client lourd</strong> pour la gestion des interventions techniques et des contrats de maintenance chez CashCash.
+                        </p>
+                        <p>
+                            Le projet est organisé en <strong>jalons</strong> :
+                        </p>
+                        <ul>
+                            <li><strong>Jalon 1</strong> : Analyse, planification et mise en place des outils collaboratifs.</li>
+                            <li><strong>Jalon 2</strong> : Développement de l'application web (gestion des interventions).</li>
+                            <li><strong>Jalon 3</strong> : Développement du client lourd (gestion des contrats et export XML/PDF).</li>
+                        </ul>
+                        <div class="skills">
+                            <span class="skill">JavaScript</span>
+                            <span class="skill">PHP</span>
+                            <span class="skill">Git</span>
+                            <span class="skill">SQL</span>
+                            <span class="skill">Méthode Agile</span>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Jalon 1 -->
+                <section id="jalon1">
+                    <h2>Jalon 1 : Analyse et Planification</h2>
+                    <div class="card">
+                        <p>
+                            Le <strong>Jalon 1</strong> a consisté à analyser les objectifs, planifier les activités et mettre en place les outils nécessaires au bon déroulement du projet.
+                        </p>
+                        <h3>Activités réalisées :</h3>
+                        <ul>
+                            <li><strong>Analyse des objectifs</strong> : Comprendre les besoins de CashCash et les contraintes techniques.</li>
+                            <li><strong>Planification</strong> : Établir un planning détaillé (Trello) pour suivre l'avancement du projet.</li>
+                            <li><strong>Mise en place des outils collaboratifs</strong> : Utilisation de Google Drive pour les documents et Git/GitHub pour la gestion des versions du code.</li>
+                            <li><strong>Définition des indicateurs de suivi</strong> : Évaluer les écarts et ajuster le planning si nécessaire.</li>
+                        </ul>
+                        <h3>Outils utilisés :</h3>
+                        <div class="skills">
+                            <span class="skill">Trello</span>
+                            <span class="skill">GitHub</span>
+                            <span class="skill">Google Drive</span>
+                            <span class="skill">Merise 2</span>
+                        </div>
+                        <h3>Planning du projet :</h3>
+                        <p>
+                            <img src="[LIEN_VERS_TON_IMAGE_TRELLO]" alt="Planning Trello" style="width: 100%; border-radius: 8px;">
+                        </p>
+                    </div>
+                </section>
+
+                <!-- Jalon 2 -->
+                <section id="jalon2">
+                    <h2>Jalon 2 : Développement de l'Application Web</h2>
+                    <div class="card">
+                        <p>
+                            Le <strong>Jalon 2</strong> a pour objectif de développer une <strong>application web responsive</strong> pour la gestion des interventions techniques chez CashCash.
+                        </p>
+                        <h3>Fonctionnalités développées :</h3>
+                        <ul>
+                            <li><strong>Authentification sécurisée</strong> : Mots de passe forts, cryptage et hachage.</li>
+                            <li><strong>Gestion des interventions</strong> :
+                                <ul>
+                                    <li>Recherche de fiches clients par numéro.</li>
+                                    <li>Génération de fiches d'intervention au format PDF.</li>
+                                    <li>Consultation des interventions par date ou par agent.</li>
+                                    <li>Validation des interventions avec commentaires et temps passé.</li>
+                                </ul>
+                            </li>
+                            <li><strong>Tableau de bord pour les gestionnaires</strong> :
+                                <ul>
+                                    <li>Affectation des visites aux techniciens.</li>
+                                    <li>Outil statistique pour visualiser le nombre d'interventions, les kilomètres parcourus et le temps passé par matériel.</li>
+                                </ul>
+                            </li>
+                        </ul>
+                        <h3>Contraintes techniques :</h3>
+                        <ul>
+                            <li>Architecture MVC.</li>
+                            <li>Responsive design (compatible avec tous les terminaux et navigateurs).</li>
+                            <li>Utilisation de JavaScript, Ajax, JQuery.</li>
+                            <li>Base de données avec SGBD avancé (MySQL/PostgreSQL).</li>
+                            <li>Protection contre les injections SQL.</li>
+                        </ul>
+                        <h3>Exemple de code :</h3>
+                        <div class="code-block">
+                            <code>
+                            // Exemple de code pour la génération d'un PDF
+                            function generatePDF(interventionId) {
+                                // Récupération des données de l'intervention
+                                const intervention = getInterventionData(interventionId);
+
+                                // Génération du PDF avec une bibliothèque comme jsPDF
+                                const doc = new jsPDF();
+                                doc.text(`Fiche d'intervention n°${intervention.id}`, 10, 10);
+                                doc.text(`Client : ${intervention.client}`, 10, 20);
+                                doc.text(`Date : ${intervention.date}`, 10, 30);
+                                doc.text(`Matériel : ${intervention.materiel}`, 10, 40);
+                                doc.text(`Commentaire : ${intervention.commentaire}`, 10, 50);
+
+                                // Sauvegarde du PDF
+                                doc.save(`fiche-intervention-${intervention.id}.pdf`);
+                            }
+                            </code>
+                        </div>
+                        <h3>Captures d'écran :</h3>
+                        <p>
+                            <img src="[LIEN_VERS_TON_IMAGE_APPLI_WEB_1]" alt="Application Web - Tableau de bord" style="width: 100%; border-radius: 8px; margin-bottom: 10px;">
+                            <img src="[LIEN_VERS_TON_IMAGE_APPLI_WEB_2]" alt="Application Web - Fiche d'intervention" style="width: 100%; border-radius: 8px;">
+                        </p>
+                    </div>
+                </section>
+
+                <!-- Compétences -->
                 <section id="competences">
-                    <h2>Compétences Validées</h2>
-                    <p class="lead">
-                        Savoir-faire et savoir-être acquis lors de cet atelier.
-                    </p>
+                    <h2>Compétences Mises en Œuvre</h2>
                     <div class="grid">
                         <div class="project">
-                            <h3>Développement</h3>
-                            <p class="desc">
-                                JavaScript, PHP, Java, SQL, Git, Trello.
+                            <h3>Gérer le patrimoine informatique</h3>
+                            <p>
+                                <strong>Recenser et identifier les ressources numériques</strong> : Base de données, serveurs, outils collaboratifs.
+                                <br>
+                                <strong>Exploiter des référentiels, normes et standards</strong> : Respect des bonnes pratiques de développement (MVC, Agile).
                             </p>
                         </div>
                         <div class="project">
-                            <h3>Gestion de Projet</h3>
-                            <p class="desc">
-                                Méthode Agile, planification, suivi des indicateurs.
+                            <h3>Répondre aux incidents et demandes d'assistance</h3>
+                            <p>
+                                <strong>Collecter, suivre et orienter des demandes</strong> : Gestion des interventions et des contrats de maintenance.
+                                <br>
+                                <strong>Traiter des demandes applicatives</strong> : Développement de fonctionnalités pour les techniciens et gestionnaires.
                             </p>
                         </div>
                         <div class="project">
-                            <h3>Sécurité</h3>
-                            <p class="desc">
-                                Authentification, cryptage, protection contre les injections SQL.
+                            <h3>Développer la présence en ligne</h3>
+                            <p>
+                                <strong>Participer à l'évolution d'un site web</strong> : Développement d'une application web responsive.
+                                <br>
+                                <strong>Référencer les services en ligne</strong> : Optimisation pour les moteurs de recherche.
+                            </p>
+                        </div>
+                        <div class="project">
+                            <h3>Travailler en mode projet</h3>
+                            <p>
+                                <strong>Analyser les objectifs et modalités d'organisation</strong> : Planification et suivi avec Trello.
+                                <br>
+                                <strong>Planifier les activités</strong> : Respect des délais et des jalons.
+                                <br>
+                                <strong>Évaluer les indicateurs de suivi</strong> : Analyse des écarts et ajustements.
+                            </p>
+                        </div>
+                        <div class="project">
+                            <h3>Mettre à disposition des utilisateurs un service informatique</h3>
+                            <p>
+                                <strong>Déployer un service</strong> : Mise en production de l'application web.
+                                <br>
+                                <strong>Accompagner les utilisateurs</strong> : Formation des techniciens et gestionnaires.
+                            </p>
+                        </div>
+                        <div class="project">
+                            <h3>Organiser son développement professionnel</h3>
+                            <p>
+                                <strong>Mettre en place son environnement d'apprentissage</strong> : Utilisation de GitHub, documentation technique.
+                                <br>
+                                <strong>Gérer son identité professionnelle</strong> : Portfolio, LinkedIn, GitHub.
                             </p>
                         </div>
                     </div>
                 </section>
 
-                <!-- Veille section -->
-                <section id="veille">
-                    <h2>Veille Technologique</h2>
-                    <p class="lead">
-                        Recherches et apprentissages complémentaires.
-                    </p>
-                    <div class="timeline">
-                        <div class="note">
-                            <h3>Architecture MVC</h3>
-                            <p class="summary muted">
-                                Séparation des couches pour une meilleure maintenabilité.
+                <!-- Annexes -->
+                <section id="annexes">
+                    <h2>Annexes</h2>
+                    <div class="grid">
+                        <div class="project">
+                            <h3>Maquettes et MCD/MLD</h3>
+                            <p>
+                                <img src="[LIEN_VERS_TON_IMAGE_MCD]" alt="Modèle Conceptuel de Données" style="width: 100%; border-radius: 8px;">
+                                <img src="[LIEN_VERS_TON_IMAGE_MAQUETTE]" alt="Maquette IHM" style="width: 100%; border-radius: 8px; margin-top: 10px;">
                             </p>
                         </div>
-                        <div class="note">
-                            <h3>Responsive Design</h3>
-                            <p class="summary muted">
-                                Adaptation aux terminaux mobiles et tablettes.
+                        <div class="project">
+                            <h3>Planning et Documents</h3>
+                            <p>
+                                <a href="[LIEN_VERS_TON_PDF_RAPPORT]" target="_blank">Rapport de stage (PDF)</a>
+                                <br>
+                                <a href="[LIEN_VERS_TON_PDF_TESTS]" target="_blank">Rapport de tests (PDF)</a>
                             </p>
                         </div>
-                        <div class="note">
-                            <h3>Tests Unitaires</h3>
-                            <p class="summary muted">
-                                Automatisation des tests pour garantir la qualité du code.
+                        <div class="project">
+                            <h3>Liens Utiles</h3>
+                            <p>
+                                <a href="https://trello.com/" target="_blank">Trello</a>
+                                <br>
+                                <a href="https://github.com/" target="_blank">GitHub</a>
+                                <br>
+                                <a href="https://fr.wikipedia.org/wiki/Merise_(informatique)" target="_blank">Merise 2</a>
                             </p>
                         </div>
                     </div>
                 </section>
 
-                <!-- CV section -->
-                <section id="cv">
-                    <h2>Mon CV</h2>
-                    <p class="lead">
-                        Expériences et formations en lien avec le projet.
-                    </p>
-                    <div class="cv-grid">
-                        <div>
-                            <h3>Expérience</h3>
-                            <div class="cv-card">
-                                <h4>Atelier Professionnalisation</h4>
-                                <p class="muted">Développement d'applications pour CashCash (2025-2026)</p>
-                                <p>
-                                    Conception, développement, tests et déploiement.
-                                </p>
-                            </div>
-                        </div>
-                        <div>
-                            <h3>Formation</h3>
-                            <div class="cv-card">
-                                <h4>BTS SIO SLAM</h4>
-                                <p class="muted">Lycée [Nom], [Ville] (2024-2026)</p>
-                                <p>
-                                    Spécialisation en développement et administration système.
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="download">
-                        <p>Télécharger mon CV complet</p>
-                        <a href="#" class="btn btn-outline">PDF</a>
+                <!-- Bilan -->
+                <section>
+                    <h2>Bilan et Perspectives</h2>
+                    <div class="card">
+                        <p>
+                            Cet atelier a été une expérience enrichissante, tant sur le plan technique que professionnel. J'ai pu contribuer à un projet concret, en travaillant en équipe et en appliquant les méthodes Agile.
+                        </p>
+                        <p>
+                            Les compétences acquises me seront utiles pour mon insertion professionnelle, notamment dans les domaines du développement web, de la gestion de projet et de la sécurité informatique.
+                        </p>
+                        <p>
+                            À l'issue de cet atelier, je souhaite poursuivre dans cette voie, en me spécialisant davantage dans le développement d'applications web et la gestion de bases de données.
+                        </p>
                     </div>
                 </section>
             </div>
         </main>
     </div>
 
-    <!-- Modal -->
-    <div class="modal" id="modal">
-        <div class="modal-content">
-            <h2>Détails du Projet</h2>
-            <p>
-                Description détaillée, maquettes, cas d'utilisation, etc.
-            </p>
-            <button class="btn btn-primary" onclick="document.getElementById('modal').classList.remove('show')">
-                Fermer
-            </button>
-        </div>
-    </div>
-
     <script>
-        // Toggle theme
+        // Gestion du thème (dark/light)
         document.querySelectorAll('.toggle-btn').forEach(btn => {
             btn.addEventListener('click', () => {
                 document.querySelectorAll('.toggle-btn').forEach(b => b.classList.remove('active'));
@@ -209,11 +296,6 @@
                 document.body.classList.toggle('theme-dark');
                 document.body.classList.toggle('theme-light');
             });
-        });
-
-        // Modal
-        document.querySelector('.see-more').addEventListener('click', () => {
-            document.getElementById('modal').classList.add('show');
         });
     </script>
 </body>
