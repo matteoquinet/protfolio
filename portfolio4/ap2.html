@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Atelier Professionnalisation – Portfolio BTS SIO SLAM</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="styles.css">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700;800&family=Fira+Code:wght@400;700&display=swap" rel="stylesheet">
 </head>
 <body class="theme-dark">
@@ -287,16 +287,5 @@
         </main>
     </div>
 
-    <script>
-        // Gestion du thème (dark/light)
-        document.querySelectorAll('.toggle-btn').forEach(btn => {
-            btn.addEventListener('click', () => {
-                document.querySelectorAll('.toggle-btn').forEach(b => b.classList.remove('active'));
-                btn.classList.add('active');
-                document.body.classList.toggle('theme-dark');
-                document.body.classList.toggle('theme-light');
-            });
-        });
-    </script>
 </body>
 </html>
