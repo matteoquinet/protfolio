@@ -202,16 +202,6 @@
         </main>
     </div>
 
-    <script>
-        // Gestion du thème (dark/light)
-        document.querySelectorAll('.toggle-btn').forEach(btn => {
-            btn.addEventListener('click', () => {
-                document.querySelectorAll('.toggle-btn').forEach(b => b.classList.remove('active'));
-                btn.classList.add('active');
-                document.body.classList.toggle('theme-dark');
-                document.body.classList.toggle('theme-light');
-            });
-        });
-    </script>
+    <script src="script.js"></script>
 </body>
 </html>
