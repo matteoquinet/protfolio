@@ -177,6 +177,107 @@
                     </div>
                 </section>
 
+                <!-- Jalon 3 -->
+                <section id="jalon3">
+                    <h2>Jalon 3 : Développement du Client Lourd</h2>
+                    <div class="card">
+                        <p>
+                            Le <strong>Jalon 3</strong> a pour objectif de développer une <strong>application client lourd</strong> permettant la gestion des contrats de maintenance et l'export des données clients en format XML/PDF.
+                        </p>
+                        <h3>Fonctionnalités développées :</h3>
+                        <ul>
+                            <li><strong>Génération de fichiers XML</strong> : Intégration des données des matériels achetés par les clients (date d'installation, date d'échéance du contrat de maintenance) pour les systèmes d'information des clients.</li>
+                            <li><strong>Couverture des matériels par contrat de maintenance</strong> : Possibilité pour le gestionnaire de couvrir par un contrat de maintenance les matériels déjà vendus, avec gestion des dates de renouvellement et de fin de contrat.</li>
+                            <li><strong>Génération de fichiers PDF de relance</strong> : Création automatique de courriers de relance pour les clients dont les contrats expirent sous 60 jours.</li>
+                        </ul>
+                        <h3>Contraintes techniques :</h3>
+                        <ul>
+                            <li><strong>Couche données</strong> :
+                                <ul>
+                                    <li>Dictionnaire de données détaillé.</li>
+                                    <li>Modèle conceptuel de données (MCD) avec extensions Merise 2.</li>
+                                    <li>Modèle relationnel.</li>
+                                    <li>SGBD avancé (MySQL/PostgreSQL) avec contraintes de domaine, PL/SQL, triggers, procédures stockées, événements.</li>
+                                    <li>Script de création de la base et jeu d'essai conséquent.</li>
+                                    <li>Implémentation de la BDD dans deux environnements différents (ex: Windows/MySQL et Linux/PostgreSQL).</li>
+                                </ul>
+                            </li>
+                            <li><strong>Application client lourd</strong> :
+                                <ul>
+                                    <li>Diagramme de classe UML.</li>
+                                    <li>Code commenté et documenté (format JavaDoc).</li>
+                                    <li>Gestion fine des erreurs.</li>
+                                    <li>Documentation technique au format HTML.</li>
+                                    <li>Diagramme de cas d'utilisation et descriptions textuelles.</li>
+                                    <li>Maquettage des IHM (composants nommés).</li>
+                                    <li>Tests unitaires et rapport de tests.</li>
+                                </ul>
+                            </li>
+                            <li><strong>Règles de développement</strong> :
+                                <ul>
+                                    <li>Noms de classes en notation Pascal (ex: <code>LigneCommande</code>).</li>
+                                    <li>Noms de méthodes, paramètres et variables en notation Camel (ex: <code>uneQte</code>).</li>
+                                    <li>Documentation JavaDoc pour chaque méthode publique.</li>
+                                    <li>Privilégier la lisibilité à la concision.</li>
+                                    <li>Caractères alphanumériques uniquement pour les identifiants.</li>
+                                </ul>
+                            </li>
+                        </ul>
+                        <h3>Exemple de code :</h3>
+                        <div class="code-block">
+                            <code>
+                            /**
+                            * Génère un fichier XML pour un client donné.
+                            * @param clientId L'identifiant du client
+                            * @return Le chemin du fichier XML généré
+                            */
+                            public String genererFichierXML(int clientId) {
+                                // Récupération des données du client et de ses contrats
+                                Client client = clientDao.findById(clientId);
+                                List<Contrat> contrats = contratDao.findByClient(client);
+
+                                // Création du document XML
+                                DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
+                                DocumentBuilder builder = factory.newDocumentBuilder();
+                                Document doc = builder.newDocument();
+                                Element root = doc.createElement("Client");
+                                doc.appendChild(root);
+
+                                // Ajout des informations du client
+                                Element nom = doc.createElement("Nom");
+                                nom.appendChild(doc.createTextNode(client.getNom()));
+                                root.appendChild(nom);
+
+                                // Ajout des contrats
+                                Element contratsElement = doc.createElement("Contrats");
+                                for (Contrat contrat : contrats) {
+                                    Element contratElement = doc.createElement("Contrat");
+                                    contratElement.setAttribute("id", String.valueOf(contrat.getId()));
+                                    contratElement.setAttribute("dateFin", contrat.getDateFin().toString());
+                                    contratsElement.appendChild(contratElement);
+                                }
+                                root.appendChild(contratsElement);
+
+                                // Écriture du fichier XML
+                                String filePath = "client_" + clientId + ".xml";
+                                TransformerFactory transformerFactory = TransformerFactory.newInstance();
+                                Transformer transformer = transformerFactory.newTransformer();
+                                DOMSource source = new DOMSource(doc);
+                                StreamResult result = new StreamResult(new File(filePath));
+                                transformer.transform(source, result);
+
+                                return filePath;
+                            }
+                            </code>
+                        </div>
+                        <h3>Captures d'écran :</h3>
+                        <p>
+                            <img src="[LIEN_VERS_TON_IMAGE_CLIENT_LOURD_1]" alt="Client Lourd - Génération XML" style="width: 100%; border-radius: 8px; margin-bottom: 10px;">
+                            <img src="[LIEN_VERS_TON_IMAGE_CLIENT_LOURD_2]" alt="Client Lourd - Tableau de bord" style="width: 100%; border-radius: 8px;">
+                        </p>
+                    </div>
+                </section>
+
                 <!-- Compétences -->
                 <section id="competences">
                     <h2>Compétences Mises en Œuvre</h2>
