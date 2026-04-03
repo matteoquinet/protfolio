@@ -16,7 +16,9 @@
             <div class="role">Étudiant BTS SIO SLAM</div>
             <nav>
                 <ul>
-                    <li><a href="stage-2pace.html">Certif</a></li>
+                    <li><a href="#presentation">Certif</a></li>
+                    <li><a href="#competences">Compétences</a></li>
+                    <li><a href="index.html">< Retour</a></li>
 
                 </ul>
             </nav>
@@ -38,7 +40,7 @@
                     <p class="lead">OpenClassrooms – Projet d’application mobile</p>
                 </section>
 
-                <section>
+                <section id="presentation">
                     <h2>Présentation personnelle et contexte</h2>
                     <div class="card">
                         <p>
@@ -124,32 +126,32 @@
                         <div>
                             <h3>Exemple de code</h3>
                             <div class="code-block">
-<code>
-// Exemple de classe Java pour gérer un quiz
-public class Quiz {
-    private List<Question> questions;
-    private int score;
+                                <code>
+                                // Exemple de classe Java pour gérer un quiz
+                                public class Quiz {
+                                    private List<Question> questions;
+                                    private int score;
 
-    public Quiz() {
-        this.questions = new ArrayList<>();
-        this.score = 0;
-    }
+                                    public Quiz() {
+                                        this.questions = new ArrayList<>();
+                                        this.score = 0;
+                                    }
 
-    public void addQuestion(Question question) {
-        this.questions.add(question);
-    }
+                                    public void addQuestion(Question question) {
+                                        this.questions.add(question);
+                                    }
 
-    public void checkAnswer(int questionIndex, String userAnswer) {
-        if (questions.get(questionIndex).getCorrectAnswer().equals(userAnswer)) {
-            score++;
-        }
-    }
+                                    public void checkAnswer(int questionIndex, String userAnswer) {
+                                        if (questions.get(questionIndex).getCorrectAnswer().equals(userAnswer)) {
+                                            score++;
+                                        }
+                                    }
 
-    public int getScore() {
-        return score;
-    }
-}
-</code>
+                                    public int getScore() {
+                                        return score;
+                                    }
+                                }
+                                </code>
                             </div>
                             <div class="card" style="margin-top:12px;">
                                 <img src="images/certification/ecran2.jpg" alt="Capture d’écran du code Android Studio" style="width:100%; border-radius:8px;">
@@ -177,7 +179,7 @@ public class Quiz {
                     </div>
                 </section>
 
-                <section>
+                <section id="competences">
                     <h2>Compétences mobilisées</h2>
                     <div class="grid">
                         <div class="project">
