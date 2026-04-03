@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Atelier Professionnalisation – Portfolio BTS SIO SLAM – 1SeuleTerre</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700;800&family=Fira+Code:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body class="theme-light">
+    <div class="app">
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <div class="logo">MQ</div>
+            <div class="name">Mattéo Quinet</div>
+            <div class="role">Étudiant BTS SIO SLAM</div>
+            <nav>
+                <ul>
+                    <li><a href="#presentation">Présentation</a></li>
+                    <li><a href="#jalon1">Jalon 1</a></li>
+                    <li><a href="#jalon2">Jalon 2</a></li>
+                    <li><a href="#jalon3">Jalon 3</a></li>
+                    <li><a href="#competences">Compétences</a></li>
+                    <li><a href="#annexes">Annexes</a></li>
+                    <li><a href="index.html">< Retour</a></li>
+                </ul>
+            </nav>
+            <div class="theme-toggle">
+                <button id="btn-dark" class="toggle-btn">🌙 Dark</button>
+                <button id="btn-light" class="toggle-btn active">☀ Light</button>
+            </div>
+            <div class="socials">
+                <a href="#">LinkedIn</a>
+                <a href="#">GitHub</a>
+            </div>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="main">
+            <div class="container">
+                <!-- Présentation -->
+                <section id="presentation">
+                    <h1>Atelier Professionnalisation – Projet 1SeuleTerre</h1>
+                    <p class="lead">
+                        De Septembre 2025 à Avril 2026 – Volume horaire : 100h en atelier + travail personnel
+                    </p>
+                </section>
+
+                <!-- Présentation de l'association -->
+                <section>
+                    <h2>Présentation de l'association 1SeuleTerre</h2>
+                    <div class="card">
+                        <p>
+                            <strong>1SeuleTerre</strong> est une association étudiante en partenariat avec le Lycée Gaston Berger, dédiée à la sensibilisation aux enjeux du <strong>Green IT</strong> et de l'impact environnemental du numérique.
+                        </p>
+                        <p>
+                            Notre mission est de prévenir les risques liés à l'écologie et à l'informatique, notamment auprès des étudiants, via des articles, des ateliers et des ressources en ligne.
+                        </p>
+                        <p>
+                            Le site web permet aux utilisateurs de s'informer, de s'inscrire à des ateliers, et de consulter des articles sur des thèmes comme l'intelligence artificielle, le recyclage, ou l'éco-conception.
+                        </p>
+                    </div>
+                </section>
+
+                <!-- Objectif de l'atelier -->
+                <section>
+                    <h2>Objectif de l'atelier</h2>
+                    <div class="card">
+                        <p>
+                            L'objectif principal de cet atelier est de <strong>concevoir et développer un site web responsive</strong> pour l'association 1SeuleTerre, en respectant les principes du Green IT et les exigences de la RGPD.
+                        </p>
+                        <p>
+                            Le projet est organisé en <strong>jalons</strong> :
+                        </p>
+                        <ul>
+                            <li><strong>Jalon 1</strong> : Analyse, planification, outils collaboratifs, charte graphique.</li>
+                            <li><strong>Jalon 2</strong> : Développement du site vitrine, base de données, RGPD, maquettes.</li>
+                            <li><strong>Jalon 3</strong> : Finalisation du site, hébergement, référencement, stratégie de communication.</li>
+                        </ul>
+                        <div class="skills">
+                            <span class="skill">HTML/CSS</span>
+                            <span class="skill">PHP</span>
+                            <span class="skill">MySQL</span>
+                            <span class="skill">Git</span>
+                            <span class="skill">Méthode Agile</span>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Jalon 1 -->
+                <section id="jalon1">
+                    <h2>Jalon 1 : Analyse et Planification</h2>
+                    <div class="card">
+                        <p>
+                            Le <strong>Jalon 1</strong> a consisté à analyser les besoins, planifier les activités et mettre en place les outils collaboratifs.
+                        </p>
+                        <h3>Activités réalisées :</h3>
+                        <ul>
+                            <li><strong>Analyse des besoins</strong> : Recueil des attentes de l'association et des étudiants.</li>
+                            <li><strong>Planification</strong> : Établissement d'un planning détaillé (Trello) et répartition des tâches.</li>
+                            <li><strong>Mise en place des outils collaboratifs</strong> : Teams, Discord, GitHub, Trello.</li>
+                            <li><strong>Définition de la charte graphique</strong> : Logo, couleurs, polices.</li>
+                        </ul>
+                        <h3>Outils utilisés :</h3>
+                        <div class="skills">
+                            <span class="skill">Trello</span>
+                            <span class="skill">GitHub</span>
+                            <span class="skill">Teams</span>
+                            <span class="skill">Discord</span>
+                        </div>
+                        <h3>Planning du projet :</h3>
+                        <p>
+                            <img src="image/trello-1seuleterre.png" alt="Planning Trello" style="width: 100%; border-radius: 8px;">
+                        </p>
+                    </div>
+                </section>
+
+                <!-- Jalon 2 -->
+                <section id="jalon2">
+                    <h2>Jalon 2 : Développement du Site Vitrine</h2>
+                    <div class="card">
+                        <p>
+                            Le <strong>Jalon 2</strong> a permis de développer le site vitrine, la base de données, et de mettre en place la politique RGPD.
+                        </p>
+                        <h3>Fonctionnalités développées :</h3>
+                        <ul>
+                            <li><strong>Authentification sécurisée</strong> : Inscription, connexion, gestion des rôles (admin, utilisateur).</li>
+                            <li><strong>Gestion des articles</strong> :
+                                <ul>
+                                    <li>Création, modification, suppression d'articles.</li>
+                                    <li>Upload d'images et gestion des types d'articles.</li>
+                                </ul>
+                            </li>
+                            <li><strong>Gestion des ateliers</strong> :
+                                <ul>
+                                    <li>Inscription aux ateliers.</li>
+                                    <li>Suivi des inscriptions.</li>
+                                </ul>
+                            </li>
+                            <li><strong>Pages statiques</strong> : Qui sommes-nous, RGPD, Cookies, Contact.</li>
+                        </ul>
+                        <h3>Contraintes techniques :</h3>
+                        <ul>
+                            <li>Architecture MVC.</li>
+                            <li>Responsive design.</li>
+                            <li>Base de données MySQL.</li>
+                            <li>Protection contre les injections SQL.</li>
+                            <li>Respect de la RGPD.</li>
+                        </ul>
+                        <h3>Exemple de code (inscription) :</h3>
+                        <div class="code-block">
+                            <code>
+function estMotDePasseValide($mdp) {
+    return preg_match('/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[\W]).{12,}$/', $mdp);
+}
+                            </code>
+                        </div>
+                        <h3>Captures d'écran :</h3>
+                        <p>
+                            <img src="image/accueil-1seuleterre.png" alt="Page d'accueil" style="width: 100%; border-radius: 8px; margin-bottom: 10px;">
+                            <img src="image/article-1seuleterre.png" alt="Page article" style="width: 100%; border-radius: 8px;">
+                        </p>
+                    </div>
+                </section>
+
+                <!-- Jalon 3 -->
+                <section id="jalon3">
+                    <h2>Jalon 3 : Finalisation et Hébergement</h2>
+                    <div class="card">
+                        <p>
+                            Le <strong>Jalon 3</strong> a permis de finaliser le site, de le tester, et de préparer son hébergement et son référencement.
+                        </p>
+                        <h3>Fonctionnalités développées :</h3>
+                        <ul>
+                            <li><strong>Hébergement</strong> : Choix d'un hébergeur vert (ex2 Power).</li>
+                            <li><strong>Référencement</strong> : Balises méta, lien depuis le site de Gaston Berger.</li>
+                            <li><strong>Stratégie de communication</strong> : Réseaux sociaux, newsletters.</li>
+                            <li><strong>Politique de sécurité</strong> : Chiffrement des mots de passe, protection des données.</li>
+                        </ul>
+                        <h3>Contraintes techniques :</h3>
+                        <ul>
+                            <li>Optimisation des images.</li>
+                            <li>Accessibilité numérique.</li>
+                            <li>Performance web.</li>
+                        </ul>
+                        <h3>Captures d'écran :</h3>
+                        <p>
+                            <img src="image/hebergement-1seuleterre.png" alt="Hébergement" style="width: 100%; border-radius: 8px; margin-bottom: 10px;">
+                            <img src="image/referencement-1seuleterre.png" alt="Référencement" style="width: 100%; border-radius: 8px;">
+                        </p>
+                    </div>
+                </section>
+
+                <!-- Compétences -->
+                <section id="competences">
+                    <h2>Compétences Mises en Œuvre</h2>
+                    <div class="grid">
+                        <div class="project">
+                            <h3>Gérer le patrimoine informatique</h3>
+                            <p>
+                                <strong>Recenser et identifier les ressources numériques</strong> : Base de données, serveurs, outils collaboratifs.
+                                <br>
+                                <strong>Exploiter des référentiels, normes et standards</strong> : Respect des bonnes pratiques de développement (MVC, Agile).
+                                <br>
+                                <strong>Mettre en place et vérifier les niveaux d’habilitation associés à un service</strong> : Gestion des rôles utilisateurs.
+                                <br>
+                                <strong>Gérer des sauvegardes</strong> : Sauvegarde de la base de données.
+                            </p>
+                        </div>
+                        <div class="project">
+                            <h3>Répondre aux incidents et aux demandes d’assistance et d’évolution</h3>
+                            <p>
+                                <strong>Collecter, suivre et orienter des demandes</strong> : Gestion des retours utilisateurs.
+                                <br>
+                                <strong>Traiter des demandes concernant les services réseau et système, applicatifs</strong> : Résolution de bugs, améliorations.
+                            </p>
+                        </div>
+                        <div class="project">
+                            <h3>Travailler en mode projet</h3>
+                            <p>
+                                <strong>Analyser les objectifs et les modalités d’organisation d’un projet</strong> : Planification et suivi avec Trello.
+                                <br>
+                                <strong>Planifier les activités</strong> : Respect des délais et des jalons.
+                                <br>
+                                <strong>Évaluer les indicateurs de suivi d’un projet et analyser les écarts</strong> : Analyse des écarts et ajustements.
+                            </p>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Annexes -->
+                <section id="annexes">
+                    <h2>Annexes</h2>
+                    <div class="grid">
+                        <div class="project">
+                            <h3>Maquettes et MCD/MLD</h3>
+                            <p>
+                                <a href="image/mcd-1seuleterre.png"><img src="image/mcd-1seuleterre.png" alt="Modèle Conceptuel de Données" style="width: 100%; border-radius: 8px;"></a>
+                                <a href="image/mld-1seuleterre.png"><img src="image/mld-1seuleterre.png" alt="Modèle Logique de Données" style="width: 100%; border-radius: 8px; margin-top: 10px;"></a>
+                            </p>
+                        </div>
+                        <div class="project">
+                            <h3>Planning et Documents</h3>
+                            <p>
+                                <a href="document/rgpd-1seuleterre.pdf" target="_blank">Politique RGPD</a>
+                                <br>
+                                <a href="document/charte-graphique-1seuleterre.pdf" target="_blank">Charte Graphique</a>
+                                <br>
+                                <a href="document/dictionnaire-donnees-1seuleterre.pdf" target="_blank">Dictionnaire de données</a>
+                            </p>
+                        </div>
+                        <div class="project">
+                            <h3>Pages du site</h3>
+                            <p>
+                                <a href="https://github.com/ton-repo/1SeuleTerre" target="_blank">Lien GitHub</a>
+                                <br>
+                                Liste des pages :
+                                <ul>
+                                    <li>accueil.php</li>
+                                    <li>article.php</li>
+                                    <li>connexion.php</li>
+                                    <li>inscription.php</li>
+                                    <li>Qui_sommes_nous.php</li>
+                                    <li>RGPD.php</li>
+                                    <li>Cookies.php</li>
+                                    <li>contact.php</li>
+                                </ul>
+                            </p>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Bilan -->
+                <section>
+                    <h2>Bilan et Perspectives</h2>
+                    <div class="card">
+                        <p>
+                            Cet atelier a été une expérience enrichissante, tant sur le plan technique que professionnel. J'ai pu contribuer à un projet concret, en travaillant en équipe et en appliquant les méthodes Agile.
+                        </p>
+                        <p>
+                            Les compétences acquises me seront utiles pour mon insertion professionnelle, notamment dans les domaines du développement web, de la gestion de projet et de la sécurité informatique.
+                        </p>
+                        <p>
+                            À l'issue de cet atelier, je souhaite poursuivre dans cette voie, en me spécialisant davantage dans le développement d'applications web et la gestion de bases de données.
+                        </p>
+                    </div>
+                </section>
+            </div>
+        </main>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
