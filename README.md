@@ -18,3 +18,9 @@ index           - 90%       - vérifier, compléter - attention un lien sans lia
 mention-legal   - 99%       - ajouter une ligne pour signalé image exterieur
 stage-2pace     - X%        - affiné les preuves de compétences
 stage-drasi     - X%        - affiné les preuves de compétences
+
+
+
+
+E6 - ap
+E5 - portfolio
