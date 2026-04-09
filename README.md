@@ -8,16 +8,16 @@ Qui reste a faire
 - Vérifier GLPI, veille
 - Ajouter PIX
 
-ap1             - 0%
-ap2             - 99.99%    - manque screen facultatif
+ap1             - 100%
+ap2             - 100%    - manque screen facultatif
 veille          - 50%       - manque pourquoi sujet retenu + synthèse
-certification   - 50%
+certification   - 90%
 compétences     - 0%        - page facultative
 glpi            - 90%       - affiné les preuves de compétences
 index           - 90%       - vérifier, compléter - attention un lien sans liaison type épreuve - ajouter lien vers tableau
 mention-legal   - 99%       - ajouter une ligne pour signalé image exterieur
-stage-2pace     - X%        - affiné les preuves de compétences
-stage-drasi     - X%        - affiné les preuves de compétences
+stage-2pace     - 99.99%        - affiné les preuves de compétences
+stage-drasi     - 70%        - affiné les preuves de compétences
 
 
 
