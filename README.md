@@ -17,7 +17,7 @@ glpi            - 90%       - affiné les preuves de compétences
 index           - 90%       - vérifier, compléter - attention un lien sans liaison type épreuve - ajouter lien vers tableau
 mention-legal   - 99%       - ajouter une ligne pour signalé image exterieur
 stage-2pace     - 99.99%        - affiné les preuves de compétences
-stage-drasi     - 70%        - affiné les preuves de compétences
+stage-drasi     - 100%        - affiné les preuves de compétences
 
 
 
